@@ -3,8 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  config:{
+    backendUrl:""
+  }
+
 };
+let url=window.location.host
+if(url.includes("localhost")){
+  console.log("Enabled local host urls");
+  environment.config.backendUrl="http://localhost:8080";
+
+}else{
+  console.log("enabled prod urls");
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

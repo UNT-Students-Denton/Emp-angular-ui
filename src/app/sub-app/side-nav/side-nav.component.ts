@@ -1,5 +1,5 @@
 import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -17,7 +17,10 @@ export class SideNavComponent implements OnInit {
           this.onResize();
     }
   @Input() isMenuToggle:any;
-  constructor() { 
+  constructor( private authService:ApiService) { 
+    // this.authService.get('/emp',{}).subscribe(res=>{
+    //   console.log(res);
+    // })
     this.getScreenSize();
   }
 ngOnChanges(changes:any){
