@@ -1,9 +1,18 @@
 <div class="login-style pos-rel">
+  <div class="flex">
+    <div>
+      <mat-icon class="ml-15 pointer mt-10" color="primary" routerLink="/">engineering</mat-icon>
+
+    </div>
+    <div class="mr-15 mt-10 text-right">
+      <mat-icon class="arrow-f blink" color="primary">arrow forward</mat-icon><span class="text-info  pointer "
+      (click)="loginAs(isAdmin?'employee-login':'admin-login')">Switch to {{isAdmin?'Employee':'Admin'}}</span></div>
+  </div>
     <div class="login-style-card wid-25 pos-abs">
     <mat-card > 
         <mat-card-title
         ><div class="text-center"><mat-icon class="login-icon-style  " color="primary">account_circle</mat-icon></div>
-        <div class="text-center">Log in</div></mat-card-title
+        <div class="text-center f-18">Log in as {{isAdmin?'Admin':'Employee'}}</div></mat-card-title
         >
         <mat-card-subtitle>
             <div class="text-center pt-15 ">

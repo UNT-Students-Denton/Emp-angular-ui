@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+import { LandingPageComponent } from './shared/components/landing-page/landing-page.component';
 
-const routes: Routes = [{
-  path:'login',
+const routes: Routes = [
+  {
+    path:"landing-page",
+    component:LandingPageComponent
+  },{
+  path:'admin-login',
+  component:LoginComponent
+},
+{
+  path:'employee-login',
   component:LoginComponent
 },
 {
@@ -12,7 +21,7 @@ const routes: Routes = [{
 },
 {
 path:'',
-redirectTo:"login",
+redirectTo:"landing-page",
 pathMatch:"full"
 }];
 

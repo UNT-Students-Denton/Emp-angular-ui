@@ -5,8 +5,15 @@ import { SubAppComponent } from "./sub-app/sub-app.component";
 const routes: Routes = [
   {
   path:'',
-  component:SubAppComponent
-  }];
+  component:SubAppComponent,
+  children:[
+{
+  path: 'admin',
+  loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule)
+}
+  ]
+  },
+];
   
   @NgModule({
     imports: [RouterModule.forChild(routes)],

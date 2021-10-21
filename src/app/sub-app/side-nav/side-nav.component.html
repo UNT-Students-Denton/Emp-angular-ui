@@ -1,5 +1,14 @@
 <div class="side-nav">
 <div class="side-nav-content" id="side-nav-content" [ngClass]="{'side-nav-default-width':!isMenuToggle,'side-nav-lg-width':isMenuToggle}">
-
+    <ul class="menu-list pad-0">
+        <li class="pointer" *ngFor="let menuItem of sideMenus" [ngClass]="{'menu-list-li ml-5':!isMenuToggle,'li-expand':isMenuToggle}">
+            <div>
+            <i *ngIf="isMenuToggle" class="{{menuItem.iconName}} f-20 ml-5 "></i> <span class="ml-5" *ngIf="isMenuToggle">
+                {{menuItem.name}}
+            </span>
+            <i *ngIf="!isMenuToggle" class="{{menuItem.iconName}} f-30 icon-item-style"></i>
+        </div>
+        </li>
+    </ul>
 </div>
 </div>

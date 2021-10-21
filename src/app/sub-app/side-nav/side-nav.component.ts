@@ -10,6 +10,10 @@ export class SideNavComponent implements OnInit {
   // Declare height and width variables
   scrHeight:any;
   scrWidth:any;
+  sideMenus:any[]=[{
+    iconName:"fa fa-user-circle",
+    name:"Example"
+  }]
   @HostListener('window:resize', ['$event'])
     getScreenSize(event?:Event) {
           this.scrHeight = window.innerHeight;

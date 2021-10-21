@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  isAdmin:boolean=false;
 loginForm=new FormGroup(
  {userName:new FormControl('',[Validators.required]),
   password:new FormControl('',[Validators.required])
@@ -17,6 +18,11 @@ passwordHide:boolean=true;
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    if(window.location.href.includes('admin')){
+      this.isAdmin=true
+    }else{
+      this.isAdmin=false;
+    }
   }
   get logInFormControls(){
     return this.loginForm.controls;
@@ -25,5 +31,8 @@ passwordHide:boolean=true;
     console.log("Successfully Logged In");
     this.router.navigateByUrl("/app")
   }
+  loginAs(type:any){
+    this.router.navigateByUrl(`/${type}`);
 
+  }
 }

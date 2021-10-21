@@ -10,3 +10,29 @@
     width: 200px;
     transition: width 0.1s;
 }
+.menu-list{
+        list-style-type: none;
+      }
+      .menu-list-li{
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+        box-shadow: 0.1px 0.1px #ccc;
+    }
+    .icon-item-style{
+        position: relative;
+        left: 7px;
+        top: 7px;
+    }
+.li-expand{
+    padding: 8px 5px 8px 5px;
+    border-bottom: 1px solid rgb(0 0 0 / 4%);
+    cursor: pointer;
+
+}
+.selected-item-style{
+    background:#00695c;
+    color: white;
+
+}
