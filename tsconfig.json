@@ -20,7 +20,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@angular/*": [ "../node_modules/@angular/*" ],
+      "@app/*": ["app/*"],
+      "@views/*": ["app/views/*"],
+      "@containers/*": ["app/containers/*"],
+      "@store/*": ["app/store/*"],
+      "@services/*": ["app/services/*"]
+  }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

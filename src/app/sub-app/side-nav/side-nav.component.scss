@@ -19,6 +19,8 @@
         height: 45px;
         width: 45px;
         box-shadow: 0.1px 0.1px #ccc;
+        margin-top:10px;
+        margin-bottom: 10px;
     }
     .icon-item-style{
         position: relative;
@@ -35,4 +37,12 @@
     background:#00695c;
     color: white;
 
+}
+.link-menu-active{
+  color:var(--bg);  
+}
+.link-menu-item-active{
+    background-color: var(--bg);
+    color:white;
+    
 }

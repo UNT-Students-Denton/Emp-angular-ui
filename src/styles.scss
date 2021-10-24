@@ -2,6 +2,8 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '~@angular/material' as mat;
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -57,11 +59,20 @@ $angular-project-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  --bg:#00695c;
+}
+tr.mat-header-row {
+  height: 35px !important;
+}
+tr.mat-row, tr.mat-footer-row {
+    height: 32px !important;
+}
 .color-primary{
-color:#00695c;
+color:var(--bg);
 }
 .primary-bg{
-background-color: #00695c;
+background-color: var(--bg);
 }
 .white{
   color: white;
@@ -73,7 +84,7 @@ background-color: #00695c;
   position:absolute;
 }
 .text-center{
-  text-align: center;
+  text-align: center !important;
 }
 .text-right{
   text-align: right;
@@ -207,4 +218,27 @@ padding:5px;
 }
 table{
   width: 100% !important;
+}
+.global-search{
+  padding: 4px;
+  width: 350px;
+  color: black;
+}
+.wid-350px{
+  width: 350px !important;
+}
+.mr-10{
+  margin-right: 10px;
+}
+.fw-500{
+  font-weight: 500;
+}
+.list-style-none{
+  list-style: none;
+}
+.ml-8{
+  margin-left: 8px;
+}
+.mb-10{
+  margin-bottom: 10px;
 }

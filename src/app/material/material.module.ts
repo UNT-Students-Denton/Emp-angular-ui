@@ -7,6 +7,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -18,7 +23,13 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatTableModule
+    MatPaginatorModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTooltipModule,
+    OverlayModule
     
     
   ],
@@ -29,7 +40,13 @@ import {MatTableModule} from '@angular/material/table';
   MatButtonModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatTableModule
+  MatPaginatorModule,
+  MatExpansionModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatTooltipModule,
+  OverlayModule
  ]
 })
 export class MaterialModule { }

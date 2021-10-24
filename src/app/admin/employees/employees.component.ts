@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator,PageEvent } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -25,11 +28,43 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
+  @ViewChild('paginator') paginator: MatPaginator;
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  // MatPaginator Output
+  pageEvent: PageEvent;
+  Employees:any[]=ELEMENT_DATA;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  dataSource: MatTableDataSource<any>;
+  searchString:any="";
   constructor() { }
 
   ngOnInit(): void {
+    this.dataSource = new MatTableDataSource(this.Employees);
+  
   }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+}
+onPage(event:any){
+  console.log("pageevent"+event)
+}
+sortData(sort:Sort){
+  let field=sort.active;
+  if(sort.direction=='asc'){
+    this.Employees=this.Employees.sort((a,b)=>a[field]>b[field]?1:-1);
+  }else{
+    this.Employees=this.Employees.sort((a,b)=>a[field]>b[field]?-1:1);
 
+  }
+  this.dataSource.data=this.Employees;
+}
+applyFilter(filterValue: string) {
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+  console.log(this.dataSource.filter);
+  if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage();
+  }
+}
 }

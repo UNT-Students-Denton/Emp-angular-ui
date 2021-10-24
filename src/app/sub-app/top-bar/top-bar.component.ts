@@ -6,12 +6,16 @@ import { Component, OnInit, Output,EventEmitter, HostListener } from '@angular/c
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
-@Output() sideNavToggleEvent=new EventEmitter()
+@Output() sideNavToggleEvent=new EventEmitter();
+isOpen:boolean=false;
   constructor() { }
 
   ngOnInit(): void {
   }
 toggle(){
   this.sideNavToggleEvent.emit(true)
+}
+logout(){
+  
 }
 }

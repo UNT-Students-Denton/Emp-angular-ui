@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sub-app.component.html'})
 export class SubAppComponent implements OnInit {
 isMenuToggle:boolean=false;
+name:any="kousik";
   constructor() { }
 
   ngOnInit(): void {

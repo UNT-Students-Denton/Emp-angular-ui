@@ -5,8 +5,26 @@
         </button>
         <span>Employee Orientation Portal <i class="fa fa-info-cirle"></i></span>
         <span class="top-nav-spacer"></span>
-        <button mat-icon-button class="user-button" aria-label="Example icon-button with share icon">
+        <button mat-icon-button class="user-button" aria-label="Example icon-button with share icon"
+        (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
           <mat-icon class="user-icon">account_circle</mat-icon>
         </button>
       </mat-toolbar>
 </div>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+<div class="card wid-180">
+  <ul class="list-style-none pad-0 overlay-margin user-overlay">
+    <li>
+      <div class="dis-inline-block overlay-style ml-8">
+        <mat-icon>logout</mat-icon>
+      </div>
+      <div class="dis-inline-block ml-8" (click)="logout()">Logout</div>
+    </li>
+  </ul>
+</div>
+</ng-template>
