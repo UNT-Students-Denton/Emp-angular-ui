@@ -29,7 +29,7 @@ passwordHide:boolean=true;
   }
   logIn(){
     console.log("Successfully Logged In");
-    localStorage.setItem("userInfo",JSON.stringify({isAdmin:true}));
+    localStorage.setItem("userInfo",JSON.stringify({isAdmin:false}));
     this.router.navigateByUrl("/app")
   }
   loginAs(type:any){
