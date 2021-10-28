@@ -18,13 +18,20 @@
   [cdkConnectedOverlayOpen]="isOpen"
 >
 <div class="card wid-180">
-  <ul class="list-style-none pad-0 overlay-margin user-overlay">
-    <li>
+  <ul class="list-style-none pad-0 overlay-margin user-overlay m-0">
+    <li class="li-item-style" (click)="showProfile()">
+      <div class="dis-inline-block overlay-style ml-8">
+       <i class="fa fa-user f-25"></i>
+      </div>
+      <div class="dis-inline-block ml-8 emp-name" >Kousikkumar</div>
+    </li>
+    <li class="li-item-style" (click)="logout()">
       <div class="dis-inline-block overlay-style ml-8">
         <mat-icon>logout</mat-icon>
       </div>
-      <div class="dis-inline-block ml-8" (click)="logout()">Logout</div>
+      <div class="dis-inline-block ml-8" >Logout</div>
     </li>
+    
   </ul>
 </div>
 </ng-template>

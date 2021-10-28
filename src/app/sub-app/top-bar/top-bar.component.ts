@@ -1,4 +1,5 @@
 import { Component, OnInit, Output,EventEmitter, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,7 +9,7 @@ import { Component, OnInit, Output,EventEmitter, HostListener } from '@angular/c
 export class TopBarComponent implements OnInit {
 @Output() sideNavToggleEvent=new EventEmitter();
 isOpen:boolean=false;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +18,8 @@ toggle(){
 }
 logout(){
   
+}
+showProfile(){
+this.router.navigateByUrl("/app/profile");
 }
 }

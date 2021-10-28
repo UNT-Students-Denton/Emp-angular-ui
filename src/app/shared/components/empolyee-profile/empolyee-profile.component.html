@@ -1,0 +1,72 @@
+<div class="emp-profile flex">
+    <div class="m-10">
+        <mat-card class="h-230">
+            <div clsss="profile-icon">
+                <div class="text-center">
+                <mat-icon class="user-icon">account_circle</mat-icon>
+                </div>
+            </div>
+            <div class="f-18 text-center">
+                <span>{{user.firstName}}</span>,<span>{{user.lastName}}</span>
+            </div>
+        </mat-card>
+    </div>
+    <div class="m-10">
+        <mat-card class="h-230 emp-detail-card">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">First Name: </div>
+                    <div class="dis-inline-block u-value">{{user.firstName}} </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Last Name: </div>
+                    <div class="dis-inline-block u-value">{{user.lastName}}</div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Gender: </div>
+                    <div class="dis-inline-block u-value">{{user.gender}} </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Date Of Birth: </div>
+                    <div class="dis-inline-block u-value">{{user.DOB}} </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Ph No.: </div>
+                    <div class="dis-inline-block u-value">{{user.phNo}}</div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Certificate Status: </div>
+                    <div class="dis-inline-block u-value">{{user.status}} </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Department: </div>
+                    <div class="dis-inline-block u-value">{{user.department}} </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">isActive: </div>
+                    <div class="dis-inline-block u-value">{{user.isActive?'Yes':'No'}}</div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Salary: </div>
+                    <div class="dis-inline-block u-value">{{user.salary}}$ </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="m-10">
+        <mat-card class="h-230 emp-detail-card">
+            <button class="view-certificate-button" mat-raised-button color="primary">View Certificate</button>
+                  </mat-card>
+        
+    </div>
+</div>
+
+<div class="pos-rel emp-profile-note">
+<div class="text-center  red">
+   <b class="mr-5">Note: </b> You are not allowed to change the personal details. For Modifying the details contact your manager.
+</div>
+</div>

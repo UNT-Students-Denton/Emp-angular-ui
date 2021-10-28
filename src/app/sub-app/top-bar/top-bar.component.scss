@@ -31,9 +31,16 @@
     margin:4px 0px 8px 0px;
 }
 .user-overlay>li:hover{
-    padding-bottom: 10px;
     background: var(--bg);
     color: white;
     border:1px solid #ccc;
     border-radius: 2px;
+}
+.li-item-style{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+.emp-name{
+    position: relative;
+    top: 5px;
 }

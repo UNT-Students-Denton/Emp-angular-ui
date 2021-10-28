@@ -1,0 +1,15 @@
+    <mat-card class="{{card.class_name}}">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{card.dept_name}}</mat-card-title>
+              <mat-card-subtitle>Training Course</mat-card-subtitle>
+          </mat-card-header>
+              <img mat-card-image src="{{card.file_name}}" alt="Fuzzys Icon">
+          <mat-card-actions>
+                <button mat-button class="example-button" mat-raised-button #tooltip="matTooltip"
+                matTooltip="Click the start course button to begin training" 
+                [matTooltipPosition]="position.value" 
+                aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                (click)="startCourse()">Start Course</button>
+          </mat-card-actions>
+        </mat-card>

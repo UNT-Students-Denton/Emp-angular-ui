@@ -242,3 +242,40 @@ table{
 .mb-10{
   margin-bottom: 10px;
 }
+.course-flex{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 22px 0px 22px 8px;
+  overflow-y: auto;
+  height: 520px;
+}
+.course-flex > div{
+  flex: 1 1 25%;
+  overflow-y: auto;
+  padding-bottom: 10px;
+
+  // height: 500px;
+
+}
+.f-25{
+font-size: 24px;
+}
+.m-0{
+  margin:0px !important;
+}
+.emp-profile>div:nth-child(1){
+  flex-grow:1;
+}
+.emp-profile>div:nth-child(2){
+  flex-grow:3; 
+}
+.emp-profile>div:nth-child(3){
+  flex-grow:1; 
+}
+.u-label{
+  margin-right: 5px;
+  font-weight: 500;
+}
+.u-value{
+  font-weight: 500;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,8 @@ loginForm=new FormGroup(
  }
 )
 passwordHide:boolean=true;
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    private authService:AuthService) { }
 
   ngOnInit(): void {
     if(window.location.href.includes('admin')){
@@ -30,6 +32,12 @@ passwordHide:boolean=true;
   logIn(){
     console.log("Successfully Logged In");
     localStorage.setItem("userInfo",JSON.stringify({isAdmin:false}));
+    // let args={user_name:"",password:""};
+    // args['user_name']=this.loginForm.value.userName;
+    // args['password']=this.loginForm.value.password;
+    //  this.authService.login(args).subscribe(res=>{
+    //    console.log(res);
+    //  })
     this.router.navigateByUrl("/app")
   }
   loginAs(type:any){
