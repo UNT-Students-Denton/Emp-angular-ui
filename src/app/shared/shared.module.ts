@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { ViewCourseComponent } from './components/view-course/view-course.component';
 import { EmpolyeeProfileComponent } from './components/empolyee-profile/empolyee-profile.component';
+import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 
 
 
@@ -15,7 +16,8 @@ import { EmpolyeeProfileComponent } from './components/empolyee-profile/empolyee
     HomeComponent,
     CourseCardComponent,
     ViewCourseComponent,
-    EmpolyeeProfileComponent
+    EmpolyeeProfileComponent,
+    ImageSliderComponent
   ],
   imports: [
     CommonModule,
