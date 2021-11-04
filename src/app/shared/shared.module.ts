@@ -7,6 +7,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { ViewCourseComponent } from './components/view-course/view-course.component';
 import { EmpolyeeProfileComponent } from './components/empolyee-profile/empolyee-profile.component';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
+import { EmployeeTransferComponent } from './components/employee-transfer/employee-transfer.component';
 
 
 
@@ -17,7 +18,8 @@ import { ImageSliderComponent } from './components/image-slider/image-slider.com
     CourseCardComponent,
     ViewCourseComponent,
     EmpolyeeProfileComponent,
-    ImageSliderComponent
+    ImageSliderComponent,
+    EmployeeTransferComponent
   ],
   imports: [
     CommonModule,

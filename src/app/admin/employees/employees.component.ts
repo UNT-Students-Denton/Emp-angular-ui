@@ -1,26 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { Router } from '@angular/router';
+import { EmployeeTransferComponent } from 'src/app/shared/components/employee-transfer/employee-transfer.component';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 
 @Component({
   selector: 'app-employees',
@@ -29,20 +15,34 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class EmployeesComponent implements OnInit {
   @ViewChild('paginator') paginator: MatPaginator;
-  length = 100;
   pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageSizeOptions: number[] = [];
   // MatPaginator Output
   pageEvent: PageEvent;
-  Employees:any[]=ELEMENT_DATA;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  Employees:any[]=[];
+  displayedColumns: string[] = ['ID', 'Name','Start Date', 'Department', 'Score','Phone Number','Actions'];
   dataSource: MatTableDataSource<any>;
   searchString:any="";
-  constructor() { }
+  constructor(private sharedService:SharedService,
+    private router:Router,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.Employees);
+    this.getEmployees();
   
+  }
+  getEmployees(){
+    
+this.sharedService.getEmployes().subscribe(res=>{
+  if(res.status=="Success"){
+    console.log(res)
+   this.Employees=res.data;
+   this.dataSource = new MatTableDataSource(this.Employees);
+   this.setPageSizeOptions();
+  }
+
+})
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -67,4 +67,30 @@ applyFilter(filterValue: string) {
     this.dataSource.paginator.firstPage();
   }
 }
+setPageSizeOptions(){
+  if(this.Employees.length<=10){
+    this.pageSizeOptions.push(10);
+  }else{
+    for(let i=0;i<Math.round(this.Employees.length/10);i++){
+      this.pageSizeOptions.push((i+1)*10);
+    }
+  }
 }
+buildAddress(){
+
+}
+viewProfile(employee:any){
+  if(employee && 
+    employee.Emp_Id){
+  this.router.navigateByUrl(`/app/profile/${employee.Emp_Id}`);
+  }
+}
+openDialog() {
+  const dialogRef = this.dialog.open(EmployeeTransferComponent,{height:'190px',width:'325px'});
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
+}
+

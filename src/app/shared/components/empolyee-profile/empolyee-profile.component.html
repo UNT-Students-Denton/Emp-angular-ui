@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="f-18 text-center">
-                <span>{{user.firstName}}</span>,<span>{{user.lastName}}</span>
+                <span>{{employee.Emp_First_Name}}</span>,<span>{{employee.Emp_Last_Name}}</span>
             </div>
         </mat-card>
     </div>
@@ -16,43 +16,43 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">First Name: </div>
-                    <div class="dis-inline-block u-value">{{user.firstName}} </div>
+                    <div class="dis-inline-block u-value">{{employee.Emp_First_Name}} </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">Last Name: </div>
-                    <div class="dis-inline-block u-value">{{user.lastName}}</div>
+                    <div class="dis-inline-block u-value">{{employee.Emp_Last_Name}}</div>
                 </div>
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">Gender: </div>
-                    <div class="dis-inline-block u-value">{{user.gender}} </div>
+                    <div class="dis-inline-block u-value">{{employee.gender?employee.gender:"N.A."}} </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">Date Of Birth: </div>
-                    <div class="dis-inline-block u-value">{{user.DOB}} </div>
+                    <div class="dis-inline-block u-value">{{employee.DOB?employee.DOB:"N.A."}} </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">Ph No.: </div>
-                    <div class="dis-inline-block u-value">{{user.phNo}}</div>
+                    <div class="dis-inline-block u-value">{{employee.Emp_phone}}</div>
                 </div>
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">Certificate Status: </div>
-                    <div class="dis-inline-block u-value">{{user.status}} </div>
+                    <div class="dis-inline-block u-value">{{employee.status?employee.status:"N.A."}} </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">Department: </div>
-                    <div class="dis-inline-block u-value">{{user.department}} </div>
+                    <div class="dis-inline-block u-value">{{employee.department?employee.department:"N.A."}} </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">isActive: </div>
-                    <div class="dis-inline-block u-value">{{user.isActive?'Yes':'No'}}</div>
+                    <div class="dis-inline-block u-value">{{employee.isActive?'Yes':'No'}}</div>
                 </div>
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">Salary: </div>
-                    <div class="dis-inline-block u-value">{{user.salary}}$ </div>
+                    <div class="dis-inline-block u-value">{{employee.salary?employee.salary:0}}$ </div>
                 </div>
             </div>
         </mat-card>

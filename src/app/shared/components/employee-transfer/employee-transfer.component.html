@@ -1,0 +1,22 @@
+<div class="header-style"><h3 mat-dialog-title>Transfer Employee</h3>
+</div>
+<br>
+<div mat-dialog-content>
+    <div class="text-center">
+    <mat-form-field>
+        <mat-label>Select Department</mat-label>
+        <select matNativeControl required>
+          <option *ngFor="let item of dropDownItems" [value]="item.value">
+            {{item.viewValue}}
+          </option>
+        </select>
+      </mat-form-field>
+    </div>
+    <br>
+</div>
+<div mat-dialog-actions class=" pad-5 mat-footer-style">
+    <div>
+    <button mat-raised-button  mat-dialog-close>Close</button>
+  <button mat-raised-button    (click)="transfer()">Transfer</button>
+</div>
+</div>

@@ -11,4 +11,11 @@ export class AuthService {
    login(params:any){
    return this.apiService.post("/login",params);
    }
+   getUserInfo(){
+     let userInfo=localStorage.getItem("userInfo");
+          if(userInfo){
+            userInfo=JSON.parse(userInfo);
+          }
+          return userInfo;
+   }
 }

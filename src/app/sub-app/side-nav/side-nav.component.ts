@@ -48,7 +48,7 @@ if(changes["isMenuToggle"]){
   ngOnInit(): void {
      this.userInfo=localStorage.getItem("userInfo");
      this.userInfo=JSON.parse(this.userInfo);
-     this.sideMenus=this.sideMenus.filter(res=>res.isAdmin==this.userInfo.isAdmin);
+     this.sideMenus=this.sideMenus.filter(res=>res.isAdmin==this.userInfo.is_Admin);
      this.setUrl();
   }
   ngAfterViewInit(){
@@ -61,7 +61,7 @@ if(changes["isMenuToggle"]){
     }
   }
   setUrl(){
-    if(this.userInfo.isAdmin){
+    if(this.userInfo.is_Admin){
       this.router.navigateByUrl("app/admin");
       this.sideMenus=this.sideMenus.map(res=>{
         if(res.name=="Employees"){

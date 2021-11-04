@@ -31,14 +31,23 @@ passwordHide:boolean=true;
   }
   logIn(){
     console.log("Successfully Logged In");
-    localStorage.setItem("userInfo",JSON.stringify({isAdmin:false}));
-    // let args={user_name:"",password:""};
-    // args['user_name']=this.loginForm.value.userName;
-    // args['password']=this.loginForm.value.password;
-    //  this.authService.login(args).subscribe(res=>{
-    //    console.log(res);
-    //  })
-    this.router.navigateByUrl("/app")
+    let args={user_name:"",password:""};
+    args['user_name']=this.loginForm.value.userName;
+    args['password']=this.loginForm.value.password;
+     this.authService.login(args).subscribe(res=>{
+       if(res.status=="Success"){
+         let userInfo=res.data;
+         userInfo.Token=res.access_token;
+         if(userInfo.is_Admin==1){
+           userInfo.is_Admin=true;
+         }else{
+          userInfo.is_Admin=false;
+
+         }
+        localStorage.setItem("userInfo",JSON.stringify(userInfo));
+         this.router.navigateByUrl("/app")
+       }
+     })
   }
   loginAs(type:any){
     this.router.navigateByUrl(`/${type}`);

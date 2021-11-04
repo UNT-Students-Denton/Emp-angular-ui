@@ -12,6 +12,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { OverlayModule } from '@angular/cdk/overlay';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     MatSortModule,
     MatPaginatorModule,
     MatTooltipModule,
-    OverlayModule
+    OverlayModule,
+    MatDialogModule
     
     
   ],
@@ -46,7 +49,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
   MatSortModule,
   MatPaginatorModule,
   MatTooltipModule,
-  OverlayModule
+  OverlayModule,
+  MatDialogModule
  ]
 })
 export class MaterialModule { }

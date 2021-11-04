@@ -23,6 +23,10 @@ const routes: Routes = [
       path:'profile',
       component:EmpolyeeProfileComponent
     },
+    {
+      path:'profile/:id',
+      component:EmpolyeeProfileComponent
+    },
 {
   path: 'admin',
   loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule)

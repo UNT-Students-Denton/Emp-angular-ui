@@ -279,3 +279,38 @@ font-size: 24px;
 .u-value{
   font-weight: 500;
 }
+.must-200{
+  width:200px
+}
+.must-100{
+  width: 100px;
+}
+.must-80{
+  width: 80px;
+}
+.must-150{
+  width: 150px;
+}
+
+.mat-dialog-container {
+padding:0px !important;
+}
+.mat-dilog-conternt{
+  padding: 10px !important;
+  margin: 0px !important;
+}
+.mat-dialog-container{
+  overflow-x: hidden !important;
+}
+.float-right{
+  float:right;
+}
+.mat-dialog-title {
+margin:0px !important;
+padding: 5px !important;
+}
+.mat-footer-style{
+  border-top: 1px solid #dee2e6 !important; 
+  padding:0px 10px 0px 10px !important;  
+  justify-content: flex-end;
+}
