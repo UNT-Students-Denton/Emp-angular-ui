@@ -67,7 +67,7 @@
                               <i class="fa fa-file action-class" 
                               #tooltip="matTooltip"
                              matTooltip="View Certificate" 
-                            matTooltipPosition="right" ></i>
+                            matTooltipPosition="right" (click)="print()" ></i>
                               <i class="fa fa-exchange action-class" 
                               #tooltip="matTooltip"
                              matTooltip="Trasfer" 
@@ -105,5 +105,9 @@
     </mat-card-actions>
   </mat-card>
   <br>
+  <div id="section-to-print">
+  <app-certificate></app-certificate>
+</div>
+  
  
 

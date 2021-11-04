@@ -28,7 +28,9 @@ export class SideNavComponent implements OnInit {
 ]
   @HostListener('window:resize', ['$event'])
     getScreenSize(event?:Event) {
-          this.scrHeight = window.innerHeight;
+          this.scrHeight =window.innerHeight
+          ;
+          console.log(window)
           this.scrWidth = window.innerWidth;
           this.onResize();
     }
@@ -57,7 +59,7 @@ if(changes["isMenuToggle"]){
   onResize(){
     let sideNavConcent=document.getElementById("side-nav-content");
     if(sideNavConcent){
-      sideNavConcent.style.height=this.scrHeight-52+'px'
+      sideNavConcent.style.height=this.scrHeight+'px'
     }
   }
   setUrl(){

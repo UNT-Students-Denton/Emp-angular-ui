@@ -10,6 +10,8 @@ import { SharedService } from 'src/app/shared/services/shared.service';
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
+
+
 @Output() sideNavToggleEvent=new EventEmitter();
 isOpen:boolean=false;
 subscriptions:Subscription[]=[]
@@ -43,5 +45,8 @@ ngOnDestory(){
      subscription.unsubscribe();
    }
   })
+}
+closeOverlay(){
+  this.isOpen = !this.isOpen
 }
 }

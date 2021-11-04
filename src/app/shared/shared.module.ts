@@ -8,6 +8,7 @@ import { ViewCourseComponent } from './components/view-course/view-course.compon
 import { EmpolyeeProfileComponent } from './components/empolyee-profile/empolyee-profile.component';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { EmployeeTransferComponent } from './components/employee-transfer/employee-transfer.component';
+import { CertificateComponent } from './components/certificate/certificate.component';
 
 
 
@@ -19,13 +20,15 @@ import { EmployeeTransferComponent } from './components/employee-transfer/employ
     ViewCourseComponent,
     EmpolyeeProfileComponent,
     ImageSliderComponent,
-    EmployeeTransferComponent
+    EmployeeTransferComponent,
+    CertificateComponent
   ],
   imports: [
     CommonModule,
     MaterialModule
   ],
   exports:[
+    CertificateComponent
   ]
 })
 export class SharedModule { }

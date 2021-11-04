@@ -59,7 +59,7 @@
     </div>
     <div class="m-10">
         <mat-card class="h-230 emp-detail-card">
-            <button class="view-certificate-button" mat-raised-button color="primary">View Certificate</button>
+            <button class="view-certificate-button" mat-raised-button color="primary" (click)="print()">View Certificate</button>
                   </mat-card>
         
     </div>
@@ -70,3 +70,6 @@
    <b class="mr-5">Note: </b> You are not allowed to change the personal details. For Modifying the details contact your manager.
 </div>
 </div>
+<div id="section-to-print">
+    <app-certificate></app-certificate>
+  </div>

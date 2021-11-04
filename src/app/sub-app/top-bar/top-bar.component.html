@@ -6,7 +6,7 @@
         <span>Employee Orientation Portal <i class="fa fa-info-cirle"></i></span>
         <span class="top-nav-spacer"></span>
         <button mat-icon-button class="user-button" aria-label="Example icon-button with share icon"
-        (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+        (click)="closeOverlay()" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
           <mat-icon class="user-icon">account_circle</mat-icon>
         </button>
       </mat-toolbar>
@@ -14,8 +14,11 @@
 
 <ng-template
   cdkConnectedOverlay
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayHasBackdrop]="true"
   [cdkConnectedOverlayOrigin]="trigger"
   [cdkConnectedOverlayOpen]="isOpen"
+  (backdropClick)="closeOverlay()"
 >
 <div class="card wid-180">
   <ul class="list-style-none pad-0 overlay-margin user-overlay m-0">

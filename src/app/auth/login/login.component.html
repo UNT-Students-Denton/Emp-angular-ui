@@ -38,11 +38,11 @@
                       Password is <strong>required</strong>
                     </mat-error>
                   </mat-form-field>
-                  <div class="text-right forgot-style">FORGOT!</div>
                   <div >
-                    <button mat-raised-button class="wid-100-pr"  color="primary" type="submit" >Log In</button>
+                    <button mat-raised-button class="wid-100-pr"  color="primary" type="submit"  [disabled]="!loginForm.valid">Log In</button>
 
                   </div>
+                  <div class="forgot-style red">{{errorMsg}}</div>
               </form>
         </mat-card-content>
 

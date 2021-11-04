@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 import { SharedService } from '../../services/shared.service';
 
 @Component({
@@ -22,7 +23,7 @@ employee:any={
 }
 subscription:Subscription[]=[];
   constructor(private sharedService:SharedService,
-    private route:ActivatedRoute) {
+    private route:ActivatedRoute,private authService:AuthService) {
    }
 
   ngOnInit(): void {
@@ -31,6 +32,10 @@ subscription:Subscription[]=[];
   
   }
   getEmployeeDetails(id:any){
+    if(!id){
+     let userInfo:any=this.authService.getUserInfo();
+     id=userInfo.User_Id;
+    }
     let args={emp_id:id};
     this.subscription.push(this.sharedService.getEmployeeDetails(args).subscribe(res=>{
       if(res.status=='Success'){
@@ -38,6 +43,9 @@ subscription:Subscription[]=[];
       }
     }))
     
+  }
+  print(){
+    window.print();
   }
 ngOnDestory(){
   this.subscription.forEach(subscription=>{

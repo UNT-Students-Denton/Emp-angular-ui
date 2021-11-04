@@ -23,6 +23,7 @@ export class EmployeesComponent implements OnInit {
   displayedColumns: string[] = ['ID', 'Name','Start Date', 'Department', 'Score','Phone Number','Actions'];
   dataSource: MatTableDataSource<any>;
   searchString:any="";
+  isPrint:boolean=false;
   constructor(private sharedService:SharedService,
     private router:Router,
     public dialog: MatDialog) { }
@@ -91,6 +92,13 @@ openDialog() {
   dialogRef.afterClosed().subscribe(result => {
     console.log(`Dialog result: ${result}`);
   });
+}
+print(){
+  this.isPrint=true;
+  window.print();
+  setTimeout(()=>{
+    this.isPrint=false;
+  },500)
 }
 }
 
