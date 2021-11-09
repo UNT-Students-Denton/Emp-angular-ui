@@ -20,6 +20,13 @@ export class SideNavComponent implements OnInit {
     isActive:false,
   },
   {
+    iconName:"fa fa-file",
+    name:"Take Quiz",
+    isAdmin:false,
+    url:'/start-quiz',
+    isActive:false,
+  },
+  {
     iconName:"fa fa-user-circle",
     name:"Employees",
     isAdmin:true,
@@ -61,6 +68,18 @@ if(changes["isMenuToggle"]){
     if(sideNavConcent){
       sideNavConcent.style.height=this.scrHeight+'px'
     }
+  }
+  loadScreen(item:any){
+    this.router.navigateByUrl(`app${item.url}`);
+    this.sideMenus=this.sideMenus.map(res=>{
+      if(res.name==item.name){
+        res.isActive=true;
+      }
+      if(res.name!==item.name){
+        res.isActive=false;
+      }
+      return res;
+    });
   }
   setUrl(){
     if(this.userInfo.is_Admin){

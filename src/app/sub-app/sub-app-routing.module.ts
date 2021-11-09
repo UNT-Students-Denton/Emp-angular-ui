@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { EmpolyeeProfileComponent } from "../shared/components/empolyee-profile/empolyee-profile.component";
 import { HomeComponent } from "../shared/components/home/home.component";
+import { QuizComponent } from "../shared/components/quiz/quiz.component";
+import { StartQuizComponent } from "../shared/components/start-quiz/start-quiz.component";
 import { ViewCourseComponent } from "../shared/components/view-course/view-course.component";
 import { SubAppComponent } from "./sub-app/sub-app.component";
 
@@ -18,6 +20,14 @@ const routes: Routes = [
         path:'view-course',
         component:ViewCourseComponent
       
+    },
+    {
+      path:'quiz',
+      component:QuizComponent
+    },
+    {
+      path:'start-quiz',
+      component: StartQuizComponent
     },
     {
       path:'profile',

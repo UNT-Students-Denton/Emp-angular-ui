@@ -15,6 +15,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import {MatDialogModule} from '@angular/material/dialog';
 
 
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -32,7 +33,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     MatTooltipModule,
     OverlayModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule,
+    OverlayModule
     
     
   ],
@@ -50,7 +53,9 @@ import {MatDialogModule} from '@angular/material/dialog';
   MatPaginatorModule,
   MatTooltipModule,
   OverlayModule,
-  MatDialogModule
+  MatDialogModule,
+  MatRadioModule,
+  OverlayModule
  ]
 })
 export class MaterialModule { }

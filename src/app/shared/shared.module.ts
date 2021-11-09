@@ -9,7 +9,9 @@ import { EmpolyeeProfileComponent } from './components/empolyee-profile/empolyee
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { EmployeeTransferComponent } from './components/employee-transfer/employee-transfer.component';
 import { CertificateComponent } from './components/certificate/certificate.component';
-
+import { QuizComponent } from './components/quiz/quiz.component';
+import { StartQuizComponent } from './components/start-quiz/start-quiz.component';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
 
 @NgModule({
@@ -21,11 +23,14 @@ import { CertificateComponent } from './components/certificate/certificate.compo
     EmpolyeeProfileComponent,
     ImageSliderComponent,
     EmployeeTransferComponent,
-    CertificateComponent
+    CertificateComponent,
+    QuizComponent,
+    StartQuizComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    NgxUsefulSwiperModule
   ],
   exports:[
     CertificateComponent

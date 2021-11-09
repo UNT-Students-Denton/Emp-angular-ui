@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { LandingPageComponent } from './shared/components/landing-page/landing-page.component';
+import { QuizComponent } from './shared/components/quiz/quiz.component';
+import { StartQuizComponent } from './shared/components/start-quiz/start-quiz.component';
 
 const routes: Routes = [
   {

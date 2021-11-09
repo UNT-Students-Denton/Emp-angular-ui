@@ -1,0 +1,49 @@
+.heading-class{
+    margin-top: 3%;
+    justify-content: center;
+    margin-left: 7%;
+    margin-right: 10%;
+    margin-bottom: 3%;
+    background-color: #00695c;
+    border: 1px solid black;
+    height: 2%;
+    color: white;
+}.main-class{
+    margin-left: 7%;
+    margin-bottom: 3%;
+    padding-top: 4%;
+    margin-right: 10%;
+}
+.title-class{
+    margin-top : 15px;
+}
+.question-class{
+    border: 1px solid grey;
+    height : 25%;
+    margin-bottom: 3%;
+}
+.header-class{
+    background-color: rgb(235, 235, 235);
+    border-bottom : 1px solid black;
+}
+
+.radio-group-class{
+    bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    margin-left: 15px;
+}
+.choice-class{
+    margin-bottom: 15px;
+}
+.submit-button{
+    margin-top : 30px;
+    margin-bottom: 20px;
+    margin-right: 70%;
+    background-color: #00695c;
+    color: white;
+    margin-left: 500px;
+    padding: 10px;
+
+}

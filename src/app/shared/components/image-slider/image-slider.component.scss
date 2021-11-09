@@ -1,0 +1,88 @@
+swiper {
+  display: flex;
+  height: 90%;
+  width: 60%;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  justify-content: center;
+  align-items: center;
+}
+.title-image{
+  position: absolute;
+  top: 10%;
+  height: 20%;
+  left:38%;
+}
+.swiper-button-prev{
+  position: absolute;
+  left: 15%;
+  top: 60%;
+  color: grey;
+}
+.swiper-button-next{
+  position: absolute;
+  left: 82%;
+  top: 60%;
+  color: grey;
+}
+.swiper-pagination{
+  position:absolute;
+  top: 105%;
+  left: 45%;
+  margin-right: 3px;
+}
+/**
+.arrow-left {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+}
+
+.arrow-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}**/
+
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  
+}
+.start-quiz-button{
+    float: right;
+    background: var(--bg);
+    color: white !important;
+    margin-right: 10px;
+}
+.start-quiz-button > button{
+  color: white !important;
+  border-radius: 5px !important;
+}
+.swiper-slide {
+text-align: center;
+font-size: 18px;
+background: lightgrey;
+height: 80%;
+/* Center slide text vertically */
+//display: -webkit-box;
+//display: -ms-flexbox;
+//display: -webkit-flex;
+display: flex;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+-webkit-justify-content: center;
+-webkit-box-align: center;
+-ms-flex-align: center;
+-webkit-align-items: center;
+align-items: center;
+
+background-size: cover;
+background-position: 50%;
+min-height: 20vh;
+justify-content: center;
+flex-direction: column;
+margin-top: 0px;
+}

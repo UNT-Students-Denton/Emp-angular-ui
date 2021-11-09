@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeTransferComponent implements OnInit {
   dropDownItems: any[] = [
-    { value: 'Louis Vuitton', viewValue: 'Louis Vuitton' },
-    { value: 'Gucci', viewValue: 'Gucci' },
-    { value: 'Prada', viewValue: 'Prada' },
-    { value: 'Chanel', viewValue: 'Chanel' },
+    { value: 'Fuzzys Taco Shop', viewValue: 'Fuzzys Taco Shop' },
+    { value: 'Chick-fil-a', viewValue: 'Chick-fil-a' },
+    { value: 'Burger-King', viewValue: 'Burger-King' },
+    { value: 'Cafeteria', viewValue: 'Cafeteria' },
+    { value: 'Assistantship', viewValue: 'Assistantship' },
+    { value: 'Tech Assistants', viewValue: 'Tech Assistants' },
   ];
   constructor() { }
 
