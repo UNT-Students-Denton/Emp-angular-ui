@@ -22,4 +22,7 @@ export class SharedService {
   getDepartMent(args:any){
     return this.apiService.get("/department",args)
   }
+  getQuestions(args:any){
+    return this.apiService.get("/questions",args)
+  }
 }

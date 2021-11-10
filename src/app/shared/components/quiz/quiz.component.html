@@ -1,16 +1,17 @@
-<div class = "heading-class">
-    <strong><h1 style = "justify-content: center; margin-left: 40%; padding: 5px;">TRAINING QUIZ</h1></strong>
-</div>
-<div class="main-class">
-        <mat-card class = "question-class" *ngFor= "let question of [0,1,2,3,4,5,6,7,8,9]">
-            <mat-card-header class = "header-class">
-                <mat-card-title class = "title-class">{{questions[question]}}</mat-card-title>
-            </mat-card-header>
-            <mat-card-actions>
-                <mat-radio-group class = "radio-group-class" formControlName="questionsGroup">
-                  <mat-radio-button class="choice-class" *ngFor = "let choice of [0,1,2,3]" value = "{{choice}}" [checked] = "false">{{choices[choice]}}</mat-radio-button>
-                </mat-radio-group>
-            </mat-card-actions>
-        </mat-card>
-        <input type = "button" class = "submit-button" value = "Submit Quiz" click="submitQuiz()">
-</div>
+    <div class = "heading-class">
+        <strong><h1 style = "justify-content: center; margin-left: 40%; padding: 5px;">TRAINING QUIZ</h1></strong>
+    </div>
+    <div class="main-class">
+            <mat-card class = "question-class" *ngFor= "let question of questions; let index = index">
+                <mat-card-header class = "header-class">
+                    <mat-card-title class = "title-class">{{question}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-actions>
+                    <mat-radio-group class = "radio-group-class" >
+                    <mat-radio-button class="choice-class" *ngFor = "let choice of choices" value = "{{choice}}" [checked] = "false">{{choice}}</mat-radio-button>
+                    </mat-radio-group>
+                </mat-card-actions>
+            </mat-card>
+            <input type = "button" class = "submit-button" value = "Submit Quiz" click="submitQuiz()">
+    </div>
+

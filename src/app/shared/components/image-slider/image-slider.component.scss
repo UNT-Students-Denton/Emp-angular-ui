@@ -61,6 +61,11 @@ swiper {
   color: white !important;
   border-radius: 5px !important;
 }
+.view-course-screen{
+  overflow-x: hidden;
+  overflow: auto ;
+  height: 300px;
+}
 .swiper-slide {
 text-align: center;
 font-size: 18px;
