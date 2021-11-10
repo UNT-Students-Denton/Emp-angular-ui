@@ -1,0 +1,13 @@
+<div class = "main-div">
+    <div class = "title-class">
+        <h1 style = "padding-top: 2.5%; margin-left: 42%;">Quiz Score</h1>
+    </div>
+    <div class = "info-class">
+           <p class="text">{{text3}}</p>
+           <p class="text">Your score is</p>
+           <p class="score1"><b>{{score}}</b></p>
+           <p class="text">in this quiz</p>
+    </div>
+    <input type = "button" class = "Quiz-button" value ="Retake Quiz" (click) = "openRetakeDialog()">
+    <input type = "button" class = "certificate-button" [disabled] = "disabled" value ="View Certificate" (click) = "openCertificateDialog()">
+</div>

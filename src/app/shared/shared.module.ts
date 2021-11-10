@@ -13,8 +13,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { StartQuizComponent } from './components/start-quiz/start-quiz.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { FormsModule } from '@angular/forms';
-
-
+import { ViewScoreComponent } from './components/view-score/view-score.component';
 @NgModule({
   declarations: [
     LandingPageComponent,
@@ -26,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     EmployeeTransferComponent,
     CertificateComponent,
     QuizComponent,
-    StartQuizComponent
+    StartQuizComponent,
+    ViewScoreComponent
   ],
   imports: [
     CommonModule,

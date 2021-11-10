@@ -6,6 +6,8 @@ import { QuizComponent } from "../shared/components/quiz/quiz.component";
 import { StartQuizComponent } from "../shared/components/start-quiz/start-quiz.component";
 import { ViewCourseComponent } from "../shared/components/view-course/view-course.component";
 import { SubAppComponent } from "./sub-app/sub-app.component";
+import { ViewScoreComponent } from "../shared/components/view-score/view-score.component";
+import { CertificateComponent } from "../shared/components/certificate/certificate.component";
 
 const routes: Routes = [
   {
@@ -20,6 +22,15 @@ const routes: Routes = [
         path:'view-course',
         component:ViewCourseComponent
       
+    },
+    {
+        path:'view-score',
+        component:ViewScoreComponent
+      
+    },
+    {
+      path:'certificate',
+      component : CertificateComponent
     },
     {
       path:'quiz',

@@ -1,0 +1,79 @@
+.main-div{
+    margin-top: 0%;
+    margin-left: 5%;
+}
+.title-class{
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 0.3%;
+    background-color: #00695c;
+    color: white;
+}
+.info-class{
+    padding: 0%;
+    margin-top: 1%;
+    margin-right: 15%;
+    box-sizing: border-box;
+    margin-left: 8%;
+}
+.score1{
+    font-style: normal;
+    font-size: 700%;
+    margin-top: 6%;
+    text-align:center;
+}
+.text{
+    font-style: normal;
+    font-size: 200%;
+    text-align:center;
+    margin-top: 5%;
+}
+.Quiz-button{
+    float:left;
+    padding: 0.8%;
+    background-color: #00695c;
+    color: white;
+    margin-left: 25%;
+    margin-top: 5.2%;
+}
+.certificate-button{
+    padding: 0.8%;
+    float:right;
+    background-color: #00695c ;
+    color: white;
+    margin-left:15%;
+    margin-right:30%;
+    margin-top: 5.2%;
+}
+.example-button-row button,
+.example-button-row a {
+  margin-right: 2%;
+}
+.mat-dialog-container{
+padding:2%;
+}
+.mat-dialog-title
+{
+    text-align:center;
+    justify-content: center; 
+    font-size: 150%;
+}
+.mat-dialog-content
+{
+    margin-top: 4%;
+    padding:5%;
+     
+}
+.mat-dialog-content1
+{
+    margin-bottom: 3%;
+    text-align:center;
+    justify-content: center;
+}
+.mat-dialog-content2
+{
+    margin-bottom:6%;
+    text-align:center;
+    justify-content: center;
+}
