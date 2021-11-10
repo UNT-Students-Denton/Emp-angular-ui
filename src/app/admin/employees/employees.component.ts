@@ -20,10 +20,11 @@ export class EmployeesComponent implements OnInit {
   // MatPaginator Output
   pageEvent: PageEvent;
   Employees:any[]=[];
-  displayedColumns: string[] = ['ID', 'Name','Start Date', 'Department', 'Score','Phone Number','Actions'];
+  displayedColumns: string[] = ['ID', 'Name','Start Date', 'Department', 'Score','Phone Number','Status','Actions'];
   dataSource: MatTableDataSource<any>;
   searchString:any="";
   isPrint:boolean=false;
+  certificateData:any={};
   constructor(private sharedService:SharedService,
     private router:Router,
     public dialog: MatDialog) { }
@@ -63,7 +64,6 @@ sortData(sort:Sort){
 }
 applyFilter(filterValue: string) {
   this.dataSource.filter = filterValue.trim().toLowerCase();
-  console.log(this.dataSource.filter);
   if (this.dataSource.paginator) {
     this.dataSource.paginator.firstPage();
   }
@@ -86,19 +86,23 @@ viewProfile(employee:any){
   this.router.navigateByUrl(`/app/profile/${employee.Emp_Id}`);
   }
 }
-openDialog() {
-  const dialogRef = this.dialog.open(EmployeeTransferComponent,{height:'190px',width:'325px'});
+openDialog(data:any) {
+  const dialogRef = this.dialog.open(EmployeeTransferComponent,{height:'190px',width:'325px',data:data});
 
   dialogRef.afterClosed().subscribe(result => {
+    this.getEmployees();
     console.log(`Dialog result: ${result}`);
   });
 }
-print(){
+print(employee:any){
+  this.certificateData=employee;
+  setTimeout(()=>{
   this.isPrint=true;
   window.print();
   setTimeout(()=>{
     this.isPrint=false;
   },500)
+},1000);
 }
 }
 

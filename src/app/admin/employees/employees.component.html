@@ -34,8 +34,8 @@
 
                 <!-- Department Column -->
                 <ng-container matColumnDef="Department">
-                  <th class="must-200" mat-header-cell mat-sort-header="symbol" *matHeaderCellDef> Department </th>
-                  <td class="must-200" mat-cell *matCellDef="let element">N.A. </td>
+                  <th class="must-200" mat-header-cell mat-sort-header="Dept_Name" *matHeaderCellDef> Department </th>
+                  <td class="must-200" mat-cell *matCellDef="let element">{{element.Dept_Name}} </td>
                 </ng-container>
               
                 <!-- Score Column -->
@@ -47,7 +47,7 @@
                      <!-- Status Column -->
                      <ng-container matColumnDef="Status">
                       <th mat-header-cell mat-sort-header="Status" *matHeaderCellDef> Status </th>
-                      <td mat-cell *matCellDef="let element">N.A. </td>
+                      <td mat-cell *matCellDef="let element">{{element.Training_Status}} </td>
                     </ng-container>
                      <!-- Phone Number Column -->
                      <ng-container matColumnDef="Phone Number">
@@ -67,11 +67,11 @@
                               <i class="fa fa-file action-class" 
                               #tooltip="matTooltip"
                              matTooltip="View Certificate" 
-                            matTooltipPosition="right" (click)="print()" ></i>
+                            matTooltipPosition="right" (click)="print(element)" ></i>
                               <i class="fa fa-exchange action-class" 
                               #tooltip="matTooltip"
                              matTooltip="Trasfer" 
-                             matTooltipPosition="right" (click)="openDialog()" ></i>
+                             matTooltipPosition="right" (click)="openDialog(element)" ></i>
                             </div> </td>
                         </ng-container>
               
@@ -106,7 +106,7 @@
   </mat-card>
   <br>
   <div id="section-to-print">
-  <app-certificate></app-certificate>
+  <app-certificate [data]="certificateData"></app-certificate>
 </div>
   
  

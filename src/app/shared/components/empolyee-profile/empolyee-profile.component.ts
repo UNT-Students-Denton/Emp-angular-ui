@@ -21,6 +21,7 @@ employee:any={
   isActive:true,
   salary:100
 }
+userInfo:any={};
 subscription:Subscription[]=[];
   constructor(private sharedService:SharedService,
     private route:ActivatedRoute,private authService:AuthService) {
@@ -32,9 +33,9 @@ subscription:Subscription[]=[];
   
   }
   getEmployeeDetails(id:any){
+    this.userInfo=this.authService.getUserInfo();
     if(!id){
-     let userInfo:any=this.authService.getUserInfo();
-     id=userInfo.User_Id;
+     id=this.userInfo.User_Id;
     }
     let args={emp_id:id};
     this.subscription.push(this.sharedService.getEmployeeDetails(args).subscribe(res=>{

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TooltipPosition} from '@angular/material/tooltip';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
+import { SharedService } from '../../services/shared.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +18,7 @@ export class HomeComponent implements OnInit {
 
     },
     {
-      dept_name: "Chick-Fil-A",
+      dept_name: "Chick-fil-a",
       file_name: "/assets/dining_images/chickfila.jpg",
       class_name: "t-card"
     },
@@ -41,11 +44,16 @@ export class HomeComponent implements OnInit {
     }
   ]
  
-
-  constructor() { }
+userInfo:any={};
+subscriptions:Subscription[]=[];
+  constructor(private authService:AuthService,
+    private sharedService:SharedService) {
+    this.userInfo=this.authService.getUserInfo();
+   }
 
   ngOnInit(): void {
     this.buildFlexArray();
+    this.getDepartMent();
   }
 buildFlexArray(){
   if(this.dept.length/4!==0){
@@ -55,5 +63,24 @@ buildFlexArray(){
     }
     
   }
+}
+getDepartMent(){
+  let args:any={};
+  args["Dept_Id"]=this.userInfo.Dept_Id;
+  this.subscriptions.push(this.sharedService.getDepartMent(args).subscribe(res=>{
+    if(res.status=="Success"){
+      this.dept=this.dept.filter(resp=>resp.dept_name.toLowerCase()==res.data.Dept_Name.toLowerCase());
+      localStorage.setItem("department",this.dept[0]['dept_name']);
+    }
+  }))
+  
+
+}
+ngOnDestroy(){
+  this.subscriptions.forEach(res=>{
+    if(res){
+      res.unsubscribe();
+    }
+  })
 }
 }

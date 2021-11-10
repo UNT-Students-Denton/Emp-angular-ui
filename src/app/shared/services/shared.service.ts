@@ -16,4 +16,10 @@ export class SharedService {
   logout(args:any){
     return this.apiService.put("/logout",args)
   }
+  transferEmployee(args:any){
+    return this.apiService.put("/department",args)
+  }
+  getDepartMent(args:any){
+    return this.apiService.get("/department",args)
+  }
 }

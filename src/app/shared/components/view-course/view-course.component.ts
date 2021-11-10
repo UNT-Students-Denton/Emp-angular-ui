@@ -416,12 +416,38 @@ export class ViewCourseComponent implements OnInit {
       alt: 'Enging Image'
     }
     ]
-
+departName:any;
   constructor() { }
 
   ngOnInit(): void {
-    this.images=this.Fuzzys;
-    this.len = Object.keys(this.images).length - 1;
+    this.departName=localStorage.getItem("department");
+    switch(this.departName){
+      case "Chick-fil-a": { 
+        this.images=this.Chickfila;
+        break; 
+     } 
+     case "Fuzzys Taco Shop": { 
+        this.images=this.Fuzzys;
+        break; 
+     } 
+     case "Burger-King": { 
+      this.images=this.Burger_king;
+      break; 
+   } 
+   case "Cafeteria": { 
+    this.images=this.Cafeteria;
+    break; 
+ } 
+   case "Assistantship": { 
+   this.images=this.Assistantship;
+    break; 
+  } 
+  case "Tech Assistant": { 
+    this.images=this.Assistantship;
+     break; 
+   } 
+    }
+    // this.len = Object.keys(this.images).length - 1;
   }
 
 }

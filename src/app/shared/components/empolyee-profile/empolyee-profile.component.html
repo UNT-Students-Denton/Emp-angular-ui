@@ -29,8 +29,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="dis-inline-block u-label">Date Of Birth: </div>
-                    <div class="dis-inline-block u-value">{{employee.DOB?employee.DOB:"N.A."}} </div>
+                    <div class="dis-inline-block u-label">Department: </div>
+                    <div class="dis-inline-block u-value">{{employee.Dept_Name?employee.Dept_Name:"N.A."}} </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="dis-inline-block u-label">Ph No.: </div>
@@ -43,17 +43,35 @@
             </div>
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="dis-inline-block u-label">Department: </div>
-                    <div class="dis-inline-block u-value">{{employee.department?employee.department:"N.A."}} </div>
+                    <div class="dis-inline-block u-label">State: </div>
+                    <div class="dis-inline-block u-value">{{employee.State?employee.State:0}}$ </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="dis-inline-block u-label">isActive: </div>
-                    <div class="dis-inline-block u-value">{{employee.isActive?'Yes':'No'}}</div>
+                    <div class="dis-inline-block u-label">Zip: </div>
+                    <div class="dis-inline-block u-value">{{employee.Zip}}</div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="dis-inline-block u-label">Salary: </div>
-                    <div class="dis-inline-block u-value">{{employee.salary?employee.salary:0}}$ </div>
+                    <div class="dis-inline-block u-label">County: </div>
+                    <div class="dis-inline-block u-value">{{employee.county?employee.county:"N.A."}} </div>
                 </div>
+               
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Email: </div>
+                    <div class="dis-inline-block u-value">{{employee.Emp_email?employee.Emp_email:'N.A.'}}$ </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">isActive:{{userInfo.is_active}}</div>
+                    <div class="dis-inline-block u-value">{{userInfo.is_active==1?'Yes':'No'}}</div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dis-inline-block u-label">Training Status: </div>
+                    <div class="dis-inline-block u-value">{{employee.Training_Status?employee.Training_Status:"N.A."}} </div>
+                </div>
+               
+                
             </div>
         </mat-card>
     </div>
@@ -71,5 +89,5 @@
 </div>
 </div>
 <div id="section-to-print">
-    <app-certificate></app-certificate>
+    <app-certificate [data]="employee"></app-certificate>
   </div>

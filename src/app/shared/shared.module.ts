@@ -12,6 +12,7 @@ import { CertificateComponent } from './components/certificate/certificate.compo
 import { QuizComponent } from './components/quiz/quiz.component';
 import { StartQuizComponent } from './components/start-quiz/start-quiz.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
   imports: [
     CommonModule,
     MaterialModule,
-    NgxUsefulSwiperModule
+    NgxUsefulSwiperModule,
+    FormsModule
   ],
   exports:[
     CertificateComponent
