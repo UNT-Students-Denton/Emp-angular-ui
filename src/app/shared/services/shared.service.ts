@@ -19,6 +19,10 @@ export class SharedService {
   transferEmployee(args:any){
     return this.apiService.put("/department",args)
   }
+  requestTransfer(args:any){
+    return this.apiService.put("/emp",args)
+
+  }
   updateEmployee(args:any){
     return this.apiService.put("/emp",args)
   }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { SharedService } from '../../services/shared.service';
+import { EmployeeTransferComponent } from '../employee-transfer/employee-transfer.component';
 
 @Component({
   selector: 'app-empolyee-profile',
@@ -24,7 +26,8 @@ employee:any={
 userInfo:any={};
 subscription:Subscription[]=[];
   constructor(private sharedService:SharedService,
-    private route:ActivatedRoute,private authService:AuthService) {
+    private route:ActivatedRoute,private authService:AuthService,
+    public dialog: MatDialog) {
    }
 
   ngOnInit(): void {
@@ -48,6 +51,15 @@ subscription:Subscription[]=[];
   print(){
     window.print();
   }
+  transfer(){
+   let data:any=this.employee;
+   data.isRequest=true;
+      const dialogRef = this.dialog.open(EmployeeTransferComponent,{height:'190px',width:'325px',data:data});
+    
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }
 ngOnDestory(){
   this.subscription.forEach(subscription=>{
     if(subscription){

@@ -43,10 +43,34 @@ export class EmployeeTransferComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  transfer(){
+  transferRequest(){
+    let args:any={};
+    args["Emp_Id"]=this.data.Dept_Id;
+    args["transfer_department"]=this.transferDept;
+    args["is_transfer_request"]=true;
+    this.subscriptions.push(this.sharedService.requestTransfer(args).subscribe(res=>{
+      if(res.status=='Success'){
+        this.dialogRef.close();
+      }else{
+     this.errorMsg="Error in Transfering Employee"
+      }
+    },error=>{
+      this.errorMsg="Error in Transfering Employee"
+
+    }))
+  }
+  
+  transfer(isTransfer:boolean){
     let args:any={};
     args["Dept_Id"]=this.data.Dept_Id;
-    args["Dept_Name"]=this.transferDept;
+    if(isTransfer){
+      args["Dept_Name"]=this.data.transfer_department;
+      args["transfer_department"]=null;
+      args["is_transfer_request"]=0;
+    }else{
+      args["Dept_Name"]=this.transferDept;
+
+    }
     args["isTransfer"]=true;
     this.subscriptions.push(this.sharedService.transferEmployee(args).subscribe(res=>{
       if(res.status=='Success'){
