@@ -12,7 +12,7 @@ export const environment = {
 let url=window.location.host
 if(url.includes("localhost")){
   console.log("Enabled local host urls");
-  environment.config.backendUrl="http://localhost:9040";
+  environment.config.backendUrl="http://localhost:8080";
 
 }else{
   console.log("enabled prod urls");

@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       class_name: "t-card"
     },
     {
-      dept_name: "Burger King",
+      dept_name: "Burger-King",
       file_name: "/assets/dining_images/burger_king.jpg",
       class_name: "t-card"
     },

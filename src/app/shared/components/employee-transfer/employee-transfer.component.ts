@@ -21,12 +21,24 @@ export class EmployeeTransferComponent implements OnInit {
     { value: 'Assistantship', viewValue: 'Assistantship' },
     { value: 'Tech Assistants', viewValue: 'Tech Assistants' },
   ];
+  statusOptions: any[] = [
+    { value: '', viewValue: 'Select' },
+    { value: 'In-Complete', viewValue: 'In-Complete' },
+    { value: 'Complete', viewValue: 'Complete' }
+  ];
   transferDept:any="Select";
   errorMsg:any="";
   constructor( public dialogRef: MatDialogRef<EmployeesComponent>,
      @Optional() @Inject(MAT_DIALOG_DATA) public data: Data,
   private sharedService:SharedService) {
-  this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Dept_Name)
+    if(data["isChangeStatus"]){
+      this.dropDownItems=this.statusOptions;
+      this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Training_Status)
+
+    }else{
+      this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Dept_Name)
+
+    }
   }
 
   ngOnInit(): void {
@@ -35,6 +47,7 @@ export class EmployeeTransferComponent implements OnInit {
     let args:any={};
     args["Dept_Id"]=this.data.Dept_Id;
     args["Dept_Name"]=this.transferDept;
+    args["isTransfer"]=true;
     this.subscriptions.push(this.sharedService.transferEmployee(args).subscribe(res=>{
       if(res.status=='Success'){
         this.dialogRef.close();
@@ -43,6 +56,21 @@ export class EmployeeTransferComponent implements OnInit {
       }
     },error=>{
       this.errorMsg="Error in Transfering Employee"
+
+    }))
+  }
+  statusChange(){
+    let args:any={};
+    args["Emp_Id"]=this.data.Dept_Id;
+    args["Training_Status"]=this.transferDept;
+    this.subscriptions.push(this.sharedService.updateEmployee(args).subscribe(res=>{
+      if(res.status=='Success'){
+        this.dialogRef.close();
+      }else{
+     this.errorMsg="Error in Changing Employee Status";
+      }
+    },error=>{
+      this.errorMsg="Error in Changing Employee Status";
 
     }))
   }

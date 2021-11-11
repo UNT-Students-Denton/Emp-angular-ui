@@ -104,5 +104,13 @@ print(employee:any){
   },500)
 },1000);
 }
+changeStatus(item:any){
+  item.isChangeStatus=true; 
+  const dialogRef = this.dialog.open(EmployeeTransferComponent,{height:'190px',width:'325px',data:item});
+  dialogRef.afterClosed().subscribe(result => {
+  this.getEmployees();
+    console.log(`Dialog result: ${result}`);
+  });
+}
 }
 
