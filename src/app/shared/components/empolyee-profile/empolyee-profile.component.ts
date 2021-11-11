@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { SharedService } from '../../services/shared.service';
 import { EmployeeTransferComponent } from '../employee-transfer/employee-transfer.component';
-
 @Component({
   selector: 'app-empolyee-profile',
   templateUrl: './empolyee-profile.component.html',

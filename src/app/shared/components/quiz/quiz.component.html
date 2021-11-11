@@ -1,16 +1,18 @@
-<div class = "heading-class">
-    <strong><h1 style = "justify-content: center; margin-left: 40%; margin-top: 3px; padding: 5px;">TRAINING QUIZ</h1></strong>
-</div>
-<div class="main-class">
-        <mat-card class = "question-class" *ngFor= "let question of questions; let index = index">
-            <mat-card-header class = "header-class">
-                <mat-card-title class = "title-class">{{question}}</mat-card-title>
-            </mat-card-header>
-            <mat-card-actions>
-                <mat-radio-group class = "radio-group-class" >
-                  <mat-radio-button class="choice-class" *ngFor = "let choice of choices" value = "{{choice}}" [checked] = "false">{{choice}}</mat-radio-button>
-                </mat-radio-group>
-            </mat-card-actions>
-        </mat-card>
-        <input type = "button" class = "submit-button" value = "Submit Quiz" (click)="submitQuiz()">
-
+    <div class = "heading-class">
+        <strong><h1 style = "justify-content: center; margin-left: 40%; padding: 5px;">TRAINING QUIZ</h1></strong>
+    </div>
+        <div class="main-class" *ngFor = "let index = index;let question of jumbledQuestions">
+                <mat-card class = "question-class">
+                    <mat-card-header class = "header-class">
+                        <mat-card-title class = "title-class">{{question}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <mat-radio-group class = "radio-group-class">
+                        <mat-radio-button class="choice-class" *ngFor = "let option of jumbledChoices[index]" [value] = "option+index" (change)="radioChange($event, choices[index])">{{option}}</mat-radio-button>
+                        </mat-radio-group>
+                    </mat-card-actions>
+                </mat-card>
+        </div>
+        <div>
+                <input type = "button" class = "submit-button" value = "Submit Quiz" (click)="submitQuiz()">
+        </div>

@@ -5,6 +5,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { SwiperComponent } from 'ngx-useful-swiper';
 import { ViewChild } from '@angular/core';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
 @Component({
   selector: 'app-image-slider',
   templateUrl: './image-slider.component.html',

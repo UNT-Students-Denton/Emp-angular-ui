@@ -14,6 +14,8 @@ import { StartQuizComponent } from './components/start-quiz/start-quiz.component
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { FormsModule } from '@angular/forms';
 import { ViewScoreComponent } from './components/view-score/view-score.component';
+
+
 @NgModule({
   declarations: [
     LandingPageComponent,
