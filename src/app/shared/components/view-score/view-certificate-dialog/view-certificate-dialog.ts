@@ -15,7 +15,7 @@ import { Component} from '@angular/core';
       this.dialog.closeAll();
     }
     redirectToCertificate(){
-      this.close();
+        this.close();
         this.router.navigateByUrl('app/certificate');
       }
   }

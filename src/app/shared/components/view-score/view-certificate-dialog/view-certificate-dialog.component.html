@@ -1,9 +1,11 @@
+<div class="main-dialog">
 <h1 mat-dialog-title class = "mat-dialog-title"><b>View Certificate</b></h1>
 <div mat-dialog-content class="mat-dialog-content">Please remember that you can't retake the quiz if you view the certificate.
    </div>
    <div mat-dialog-content class="mat-dialog-content1">
     Are you sure you want to view the certificate?</div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="close()">Close</button>
-  <button style = "float: right;" mat-button mat-dialog-close (click)="redirectToCertificate()">Yes</button>
+  <button mat-raised-button mat-dialog-close class = "button" (click)="close()">Close</button>
+  <button style = "float: right;" mat-button class = "button" (click)="redirectToCertificate()">Yes</button>
+</div>
 </div>

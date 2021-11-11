@@ -1,24 +1,50 @@
-<div class="header-style"><h3 mat-dialog-title>Transfer Employee</h3>
-</div>
-<br>
-<div mat-dialog-content class="pos-rel">
-    <div class="text-center">
-    <mat-form-field>
-        <mat-label>Select Department</mat-label>
-        <select matNativeControl required  [(ngModel)]="transferDept" >
-          <option *ngFor="let item of dropDownItems" (value)="item.value">
-            {{item.viewValue}}
-          </option>
-        </select>
-      </mat-form-field>
-    </div>
-    <br>
-    <div class="text-center red error-style">{{errorMsg}}</div>
-</div>
-<div mat-dialog-actions class=" pad-5 mat-footer-style">
-    <div>
-    <button mat-raised-button  mat-dialog-close>Close</button>
-  <button mat-raised-button  [disabled]="transferDept=='Select'"   (click)="transfer()">Transfer</button>
+
+<div *ngIf="!data['isConfirm']">
+  <div class="header-style"><h3 mat-dialog-title>{{data["isChangeStatus"]?'Change Status':'Transfer Employee'}}</h3>
+  </div>
+  <br>
+  <div mat-dialog-content class="pos-rel">
+      <div class="text-center">
+      <mat-form-field>
+          <mat-label>Select {{data["isChangeStatus"]?'Status':'Department'}}</mat-label>
+          <select matNativeControl required  [(ngModel)]="transferDept" >
+            <option *ngFor="let item of dropDownItems" (value)="item.value">
+              {{item.viewValue}}
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+      <br>
+      <div class="text-center red error-style">{{errorMsg}}</div>
+  </div>
+  <div mat-dialog-actions class=" pad-5 mat-footer-style">
+      <div>
+      <button mat-raised-button  mat-dialog-close>Close</button>
+      <button *ngIf="!data.isChangeStatus && !data.isRequest" mat-raised-button  [disabled]="transferDept=='Select'"   (click)="transfer(false)">Transfer</button>
+    <button *ngIf="data.isChangeStatus" mat-raised-button  [disabled]="transferDept=='Select'"   (click)="statusChange()">Submit</button>
+    <button *ngIf="data.isRequest" mat-raised-button  [disabled]="transferDept=='Select'"   (click)="transferRequest()">Submit</button>
+
+  </div>
+  
+  </div>
 </div>
 
+<div *ngIf="data['isConfirm']">
+  <div class="header-style"><h3 mat-dialog-title>Confirmation</h3>
+  </div>
+  <br>
+  <div mat-dialog-content class="pos-rel">
+      <div class="pad-5">
+      Are you sure. You want accept transfer request?
+      </div>
+      <br>
+      <div class="text-center red error-style">{{errorMsg}}</div>
+  </div>
+  <div mat-dialog-actions class=" pad-5 mat-footer-style">
+      <div>
+      <button mat-raised-button  mat-dialog-close>No</button>
+      <button  mat-raised-button  (click)="transfer(true)">Yes</button>
+  </div>
+  
+  </div>
 </div>

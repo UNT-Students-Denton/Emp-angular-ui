@@ -43,9 +43,4 @@ export class ImageSliderComponent implements OnInit {
   goToQuiz(){
     this.router.navigateByUrl("app/start-quiz");
   }
-
-  
-
-  
-
 }

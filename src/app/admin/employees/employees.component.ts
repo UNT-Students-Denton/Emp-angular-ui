@@ -86,6 +86,14 @@ viewProfile(employee:any){
   this.router.navigateByUrl(`/app/profile/${employee.Emp_Id}`);
   }
 }
+acceptRequest(item:any){
+  item.isConfirm=true; 
+  const dialogRef = this.dialog.open(EmployeeTransferComponent,{height:'170px',width:'325px',data:item});
+  dialogRef.afterClosed().subscribe(result => {
+  this.getEmployees();
+    console.log(`Dialog result: ${result}`);
+  });
+}
 openDialog(data:any) {
   const dialogRef = this.dialog.open(EmployeeTransferComponent,{height:'190px',width:'325px',data:data});
 
@@ -103,6 +111,14 @@ print(employee:any){
     this.isPrint=false;
   },500)
 },1000);
+}
+changeStatus(item:any){
+  item.isChangeStatus=true; 
+  const dialogRef = this.dialog.open(EmployeeTransferComponent,{height:'190px',width:'325px',data:item});
+  dialogRef.afterClosed().subscribe(result => {
+  this.getEmployees();
+    console.log(`Dialog result: ${result}`);
+  });
 }
 }
 

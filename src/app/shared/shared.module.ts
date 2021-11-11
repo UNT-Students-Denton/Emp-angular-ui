@@ -35,7 +35,8 @@ import { ViewScoreComponent } from './components/view-score/view-score.component
     FormsModule
   ],
   exports:[
-    CertificateComponent
+    CertificateComponent,
+    ViewScoreComponent
   ]
 })
 export class SharedModule { }

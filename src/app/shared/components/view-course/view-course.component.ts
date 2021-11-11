@@ -160,7 +160,7 @@ export class ViewCourseComponent implements OnInit {
       alt: 'Ending Image'
     }
     ]
-  Burger_king : [{
+  Burger_king :any= [{
       src: "assets/training_images/Burger_king/1.PNG",
       alt: 'Image One'
     },
@@ -229,7 +229,7 @@ export class ViewCourseComponent implements OnInit {
       alt: 'Ending Image'
     }
     ]
-    Cafeteria : [{
+    Cafeteria :any= [{
       src: "assets/training_images/Cafeteria/1.PNG",
       alt: 'Image One'
     },
@@ -306,7 +306,7 @@ export class ViewCourseComponent implements OnInit {
       alt: 'Ending Image'
     }
     ]
-  Assistantship : [{
+  Assistantship :any= [{
       src: "assets/training_images/Assistantship/1.PNG",
       alt: 'Image One'
     },
@@ -355,7 +355,7 @@ export class ViewCourseComponent implements OnInit {
       alt: 'Ending Image'
     }
     ]
-    Tech_assistants : [{
+    Tech_assistants :any= [{
       src: "assets/training_images/Tech_assistants/1.PNG",
       alt: 'Image One'
     },

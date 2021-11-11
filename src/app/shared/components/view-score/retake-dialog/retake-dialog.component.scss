@@ -1,8 +1,14 @@
-.mat-dialog-title
+.main-dialog{
+    padding: 3%;
+}.mat-dialog-title
 {
     text-align:center;
     justify-content: center; 
     font-size: 150%;
+}
+.button{
+    background-color: var(--bg);
+    color: white;
 }
 .mat-dialog-content
 {

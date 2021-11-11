@@ -1,6 +1,7 @@
-  <h1 mat-dialog-title class= "mat-dialog-title"><b>Retake Quiz</b></h1>
+<div class="main-dialog"><h1 mat-dialog-title class= "mat-dialog-title"><b>Retake Quiz</b></h1>
 <div mat-dialog-content class=" mat-dialog-content2">Are you sure you want to retake the quiz?</div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="close()">Close</button>
-  <button style = "float: right;" mat-button mat-dialog-close (click)="redirectToQuiz()">Yes</button>
+  <button mat-raised-button mat-dialog-close class = "button" (click)="close()">Close</button>
+  <button style = "float: right;" mat-raised-button mat-dialog-close class = "button" (click)="redirectToQuiz()">Yes</button>
+</div>
 </div>

@@ -21,20 +21,57 @@ export class EmployeeTransferComponent implements OnInit {
     { value: 'Assistantship', viewValue: 'Assistantship' },
     { value: 'Tech Assistants', viewValue: 'Tech Assistants' },
   ];
+  statusOptions: any[] = [
+    { value: '', viewValue: 'Select' },
+    { value: 'In-Complete', viewValue: 'In-Complete' },
+    { value: 'Complete', viewValue: 'Complete' }
+  ];
   transferDept:any="Select";
   errorMsg:any="";
   constructor( public dialogRef: MatDialogRef<EmployeesComponent>,
      @Optional() @Inject(MAT_DIALOG_DATA) public data: Data,
   private sharedService:SharedService) {
-  this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Dept_Name)
+    if(data["isChangeStatus"]){
+      this.dropDownItems=this.statusOptions;
+      this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Training_Status)
+
+    }else{
+      this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Dept_Name)
+
+    }
   }
 
   ngOnInit(): void {
   }
-  transfer(){
+  transferRequest(){
+    let args:any={};
+    args["Emp_Id"]=this.data.Dept_Id;
+    args["transfer_department"]=this.transferDept;
+    args["is_transfer_request"]=true;
+    this.subscriptions.push(this.sharedService.requestTransfer(args).subscribe(res=>{
+      if(res.status=='Success'){
+        this.dialogRef.close();
+      }else{
+     this.errorMsg="Error in Transfering Employee"
+      }
+    },error=>{
+      this.errorMsg="Error in Transfering Employee"
+
+    }))
+  }
+  
+  transfer(isTransfer:boolean){
     let args:any={};
     args["Dept_Id"]=this.data.Dept_Id;
-    args["Dept_Name"]=this.transferDept;
+    if(isTransfer){
+      args["Dept_Name"]=this.data.transfer_department;
+      args["transfer_department"]=null;
+      args["is_transfer_request"]=0;
+    }else{
+      args["Dept_Name"]=this.transferDept;
+
+    }
+    args["isTransfer"]=true;
     this.subscriptions.push(this.sharedService.transferEmployee(args).subscribe(res=>{
       if(res.status=='Success'){
         this.dialogRef.close();
@@ -43,6 +80,21 @@ export class EmployeeTransferComponent implements OnInit {
       }
     },error=>{
       this.errorMsg="Error in Transfering Employee"
+
+    }))
+  }
+  statusChange(){
+    let args:any={};
+    args["Emp_Id"]=this.data.Dept_Id;
+    args["Training_Status"]=this.transferDept;
+    this.subscriptions.push(this.sharedService.updateEmployee(args).subscribe(res=>{
+      if(res.status=='Success'){
+        this.dialogRef.close();
+      }else{
+     this.errorMsg="Error in Changing Employee Status";
+      }
+    },error=>{
+      this.errorMsg="Error in Changing Employee Status";
 
     }))
   }

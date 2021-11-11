@@ -78,6 +78,7 @@
     <div class="m-10">
         <mat-card class="h-230 emp-detail-card">
             <button class="view-certificate-button" mat-raised-button color="primary" (click)="print()">View Certificate</button>
+            <button [disabled]="userInfo.is_Admin" class="view-transfer-button" mat-raised-button color="primary" (click)="transfer()">Request To Transfer </button>
                   </mat-card>
         
     </div>

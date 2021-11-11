@@ -38,7 +38,6 @@ export class ViewScoreComponent implements OnInit {
     }
   }
   openCertificateDialog() {
-    this.dialog.closeAll();
     this.dialog.open(ViewCertificateDialog);
   }
 

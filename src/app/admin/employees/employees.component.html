@@ -47,7 +47,12 @@
                      <!-- Status Column -->
                      <ng-container matColumnDef="Status">
                       <th mat-header-cell mat-sort-header="Status" *matHeaderCellDef> Status </th>
-                      <td mat-cell *matCellDef="let element">{{element.Training_Status}} </td>
+                      <td mat-cell *matCellDef="let element">{{element.Training_Status}} 
+                        <mat-icon class="edit-icon" 
+                        #tooltip="matTooltip"
+                         matTooltip="Change Status" 
+                         matTooltipPosition="right" (click)="changeStatus(element)">edit</mat-icon>
+                      </td>
                     </ng-container>
                      <!-- Phone Number Column -->
                      <ng-container matColumnDef="Phone Number">
@@ -72,6 +77,10 @@
                               #tooltip="matTooltip"
                              matTooltip="Trasfer" 
                              matTooltipPosition="right" (click)="openDialog(element)" ></i>
+                             <i class="fa fa-bell action-class" 
+                             #tooltip="matTooltip"
+                            matTooltip="Accept Transfer" 
+                            matTooltipPosition="right" [class.color-primary]="element.is_transfer_request==1" (click)="element.is_transfer_request!=1?'':acceptRequest(element)" ></i>
                             </div> </td>
                         </ng-container>
               
