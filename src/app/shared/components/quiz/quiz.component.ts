@@ -60,8 +60,8 @@ export class QuizComponent implements OnInit {
   }
   updateScore(){
     let args:any={};
-    args['Quiz_score']=this.score;
-    args['emp_id']= this.userInfo.User_Id
+    args['Quiz_score']=this.score*10;
+    args['Emp_Id']= this.userInfo.User_Id;
     this.subscriptions.push(this.sharedService.updateEmployee(args).subscribe(res=>{
       if(res.status=='Success'){
         console.log("Successfully updated score");
@@ -71,15 +71,15 @@ export class QuizComponent implements OnInit {
   getQuestions(){
     let args:any={};
     args["Dept_Id"]=this.userInfo.Dept_Id;
+    this.correctOption=[];
     this.subscriptions.push(this.sharedService.getQuestions(args).subscribe(res=>{
     if(res.status=='Success'){
-    console.log(res);
-    res.data.forEach((element: { [x: string]: any; }) => {
+    res.data.forEach((element:any,index:number) => { 
       this.questions.push(element['quiz_questions']);
-      let set:any = [];
+      let set:any = [];   
       for(var i=0;i<4;i++){
         var k = i+1;
-        if(element['option'+k]!=null){
+        if(element['option'+k]!=null && element['option'+k]!=""){
           set.push(element['option'+k]);
         }
         else{
@@ -87,26 +87,28 @@ export class QuizComponent implements OnInit {
         }
       }
       this.choices.push(set);
-      this.correctOption[element.index]=element['correctOption'];
+      //  this.correctOption[index]=element['CorrectAns'];
     });
-    console.log(this.choices);
-    console.log(this.correctOption);
     var len = this.questions.length;
     var arr = [];
     var k = 0;
     var list2 = this.correctOption;
-    console.log(list2);
     for(var i =0;arr.length<10;i++){
-       k = Math.floor(Math.random() * (this.questions.length-1));
-       if(arr.indexOf(k)==-1){
-        console.log(k);
-        arr.push(k);
-        this.jumbledQuestions.push(this.questions[k]);
-        this.jumbledChoices.push(this.choices[k])
-        this.correctOption[i]=(list2[k]);
-       }
-    }
-    console.log(arr);
+      k = Math.floor(Math.random() * (this.questions.length-1));
+      if(arr.indexOf(k)==-1){
+       console.log(k);
+       arr.push(k);
+       this.jumbledQuestions.push(this.questions[k]);
+       this.jumbledChoices.push(this.choices[k])
+       this.correctOption.push(res.data.filter((x:any)=>x.quiz_questions==this.questions[k])[0]["CorrectAns"]);
+       console.log(this.correctOption);
+
+      }
+   }
+   console.log(arr);
+    console.log(this.choices);
+    
+    console.log(list2);
     console.log(this.jumbledQuestions);
     console.log(this.jumbledChoices);
     console.log(this.correctOption);
