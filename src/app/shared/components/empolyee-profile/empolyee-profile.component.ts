@@ -39,7 +39,7 @@ subscription:Subscription[]=[];
     if(!id){
      id=this.userInfo.User_Id;
     }
-    let args={emp_id:id};
+    let args={Emp_Id:id};
     this.subscription.push(this.sharedService.getEmployeeDetails(args).subscribe(res=>{
       if(res.status=='Success'){
         this.employee=res.data;

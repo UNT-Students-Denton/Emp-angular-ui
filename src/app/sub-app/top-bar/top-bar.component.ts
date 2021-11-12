@@ -14,12 +14,15 @@ export class TopBarComponent implements OnInit {
 
 @Output() sideNavToggleEvent=new EventEmitter();
 isOpen:boolean=false;
-subscriptions:Subscription[]=[]
+subscriptions:Subscription[]=[];
+employee:any={};
+userInfo:any={};
   constructor(private router:Router,
     private sharedService:SharedService,
     private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.getEmployeeDetails(null);
   }
 toggle(){
   this.sideNavToggleEvent.emit(true)
@@ -48,5 +51,18 @@ ngOnDestory(){
 }
 closeOverlay(){
   this.isOpen = !this.isOpen
+}
+getEmployeeDetails(id:any){
+  this.userInfo=this.authService.getUserInfo();
+  if(!id){
+   id=this.userInfo.User_Id;
+  }
+  let args={Emp_Id:id};
+  this.sharedService.getEmployeeDetails(args).subscribe(res=>{
+    if(res.status=='Success'){
+      this.employee=res.data;
+    }
+  })
+  
 }
 }
