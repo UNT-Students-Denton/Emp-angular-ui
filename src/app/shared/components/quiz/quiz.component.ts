@@ -27,7 +27,6 @@ export class QuizComponent implements OnInit {
   score = 0;
   index : any;
   static score: Number;
-  @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private router:Router,
     private authService:AuthService,
@@ -88,13 +87,15 @@ export class QuizComponent implements OnInit {
         }
       }
       this.choices.push(set);
-      this.correctOption.push(element['CorrectAns']);
+      this.correctOption[element.index]=element['correctOption'];
     });
     console.log(this.choices);
     console.log(this.correctOption);
     var len = this.questions.length;
     var arr = [];
     var k = 0;
+    var list2 = this.correctOption;
+    console.log(list2);
     for(var i =0;arr.length<10;i++){
        k = Math.floor(Math.random() * (this.questions.length-1));
        if(arr.indexOf(k)==-1){
@@ -102,7 +103,7 @@ export class QuizComponent implements OnInit {
         arr.push(k);
         this.jumbledQuestions.push(this.questions[k]);
         this.jumbledChoices.push(this.choices[k])
-        this.correctOption[i]=(this.correctOption[k]);
+        this.correctOption[i]=(list2[k]);
        }
     }
     console.log(arr);
