@@ -24,6 +24,7 @@ employee:any={
 }
 userInfo:any={};
 subscription:Subscription[]=[];
+isCertificate:boolean=false;
   constructor(private sharedService:SharedService,
     private route:ActivatedRoute,private authService:AuthService,
     public dialog: MatDialog) {
@@ -48,7 +49,13 @@ subscription:Subscription[]=[];
     
   }
   print(){
-    window.print();
+    this.isCertificate=true;
+    setTimeout(()=>{
+      window.print();
+      setTimeout(()=>{
+        this.isCertificate=false;
+      },200)
+    },500)
   }
   transfer(){
    let data:any=this.employee;

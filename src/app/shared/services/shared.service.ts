@@ -32,4 +32,12 @@ export class SharedService {
   getQuestions(args:any){
     return this.apiService.get("/questions",args)
   }
+  addNumberOfDaysToCurrentDate(numberOfDaysToAdd:number){
+    let today = new Date();
+    today.setDate(today.getDate() + numberOfDaysToAdd); 
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let  y = today.getFullYear();
+     return y + '-'+ mm + '-'+ dd;
+  }
 }

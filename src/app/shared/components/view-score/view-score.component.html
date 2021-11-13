@@ -9,5 +9,5 @@
            <p class="text">in this quiz</p>
     </div>
     <input type = "button" class = "Quiz-button" value ="Retake Quiz" (click) = "openRetakeDialog()">
-    <input type = "button" class = "certificate-button" [disabled] = "disabled" value ="View Certificate" (click) = "openCertificateDialog()">
+    <input type = "button" class = "certificate-button" [class.disabled]="disabled" [disabled] = "disabled" value ="View Certificate" (click) = "openCertificateDialog()">
 </div>

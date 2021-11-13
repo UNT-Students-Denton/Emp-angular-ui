@@ -89,6 +89,6 @@
    <b class="mr-5">Note: </b> You are not allowed to change the personal details. For Modifying the details contact your manager.
 </div>
 </div>
-<div id="section-to-print">
+<div id="section-to-print" *ngIf="isCertificate">
     <app-certificate [data]="employee"></app-certificate>
   </div>

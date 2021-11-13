@@ -25,6 +25,7 @@ export class EmployeesComponent implements OnInit {
   searchString:any="";
   isPrint:boolean=false;
   certificateData:any={};
+  certificate:boolean=false;
   constructor(private sharedService:SharedService,
     private router:Router,
     public dialog: MatDialog) { }
@@ -104,11 +105,13 @@ openDialog(data:any) {
 }
 print(employee:any){
   this.certificateData=employee;
+  this.certificate=true;
   setTimeout(()=>{
   this.isPrint=true;
   window.print();
   setTimeout(()=>{
     this.isPrint=false;
+    this.certificate=false;
   },500)
 },1000);
 }

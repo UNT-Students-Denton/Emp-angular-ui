@@ -58,7 +58,9 @@ $angular-project-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+// overflow: hidden; 
+}
 :root {
   --bg:#00695c;
 }
@@ -248,7 +250,7 @@ table{
   flex-wrap: wrap;
   padding: 22px 0px 22px 8px;
   overflow-y: auto;
-  height: 520px;
+  height: 510px;
 }
 .course-flex > div{
   flex: 1 1 25%;

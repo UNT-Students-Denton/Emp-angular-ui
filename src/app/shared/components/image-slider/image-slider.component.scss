@@ -1,12 +1,11 @@
 swiper {
   display: flex;
-  height: 90%;
+  height: 550px;
   width: 60%;
   position: absolute;
-  top: 30%;
+  top: 15%;
   left: 20%;
   justify-content: center;
-  align-items: center;
 }
 .title-image{
   position: absolute;
@@ -27,10 +26,13 @@ swiper {
   color: grey;
 }
 .swiper-pagination{
-  position:absolute;
-  top: 105%;
-  left: 45%;
-  margin-right: 3px;
+  position: absolute;
+  /* top: 105%; */
+  left: 40%;
+  margin-right: 3
+px
+;
+  bottom: 10%;
 }
 /**
 .arrow-left {
@@ -53,13 +55,14 @@ swiper {
 }
 .start-quiz-button{
     float: right;
-    background: var(--bg);
     color: white !important;
     margin-right: 10px;
 }
 .start-quiz-button > button{
   color: white !important;
   border-radius: 5px !important;
+ 
+
 }
 .view-course-screen{
   overflow-x: hidden;

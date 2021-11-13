@@ -1,4 +1,4 @@
-<div class="pad-5">
+<div><div class="pad-5">
     <mat-form-field class="example-form-field wid-350px" appearance="fill">
         <mat-label>Search</mat-label>
         <input matInput type="text" [(ngModel)]="searchString" (ngModelChange)="applyFilter($event)">
@@ -29,7 +29,7 @@
                     <!-- Start Date Column -->
                     <ng-container matColumnDef="Start Date">
                       <th class="must-100" mat-header-cell mat-sort-header="Start_Date" *matHeaderCellDef> Start Date </th>
-                      <td class="must-100" mat-cell *matCellDef="let element"> {{element.Start_Date | date: 'MM/dd/yyyy'}} </td>
+                      <td class="must-100" mat-cell *matCellDef="let element"> {{element.Start_Date ?(element.Start_Date | date: 'MM/dd/yyyy'):'N.A.'}} </td>
                     </ng-container>
 
                 <!-- Department Column -->
@@ -114,9 +114,8 @@
     </mat-card-actions>
   </mat-card>
   <br>
-  <div id="section-to-print">
+  <div id="section-to-print" *ngIf="certificate">
   <app-certificate [data]="certificateData"></app-certificate>
 </div>
   
- 
-
+</div>

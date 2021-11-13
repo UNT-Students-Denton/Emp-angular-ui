@@ -66,7 +66,7 @@ if(changes["isMenuToggle"]){
   onResize(){
     let sideNavConcent=document.getElementById("side-nav-content");
     if(sideNavConcent){
-      sideNavConcent.style.height=this.scrHeight+'px'
+      sideNavConcent.style.height=this.scrHeight-50+'px'
     }
   }
   loadScreen(item:any){

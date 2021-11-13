@@ -1,8 +1,8 @@
 <div class='view-course-screen'>
-<div class="start-quiz-button"><button mat-button id = "button" [disabled]="!isEnd"  (click) = "goToQuiz()">Start Quiz</button>
+<div class="start-quiz-button"><button mat-raised-button id = "button" [class.primary-bg]="isEnd" [disabled]="!isEnd"  (click) = "goToQuiz()">Start Quiz</button>
 </div>
   <div class = "title-image">
-  <img src = "/assets/training_images/Chickfila/chickfila-header.jpg" alt="Couldn't load header image" style = "height:80%;">
+  <!-- <img src = "/assets/training_images/Chickfila/chickfila-header.jpg" alt="Couldn't load header image" style = "height:80%;"> -->
 </div>
 <swiper [config]="config" #usefulSwiper>
     <div class="swiper-wrapper">

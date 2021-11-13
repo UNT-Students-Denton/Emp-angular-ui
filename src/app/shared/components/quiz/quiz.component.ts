@@ -49,7 +49,6 @@ export class QuizComponent implements OnInit {
     this.selected[this.index] = event.value.slice(0,-1);
   }
   submitQuiz(){
-    this.router.navigateByUrl("app/view-score");
     for(var i=0;i<10; i++){
       if(this.selected[i]==this.correctOption[i]){
         this.score += 1;
@@ -62,9 +61,14 @@ export class QuizComponent implements OnInit {
     let args:any={};
     args['Quiz_score']=this.score*10;
     args['Emp_Id']= this.userInfo.User_Id;
+    if(this.score>=8){
+    args['Start_Date']=this.sharedService.addNumberOfDaysToCurrentDate(3);
+    }
     this.subscriptions.push(this.sharedService.updateEmployee(args).subscribe(res=>{
       if(res.status=='Success'){
         console.log("Successfully updated score");
+        this.router.navigateByUrl("app/view-score");
+
       }
     }));
   }

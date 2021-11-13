@@ -1,6 +1,10 @@
     <div class = "heading-class">
-        <strong><h1 style = "justify-content: center; margin-left: 40%; padding: 5px;">TRAINING QUIZ</h1></strong>
+        <strong><h1 class="t-head">TRAINING QUIZ</h1></strong>
     </div>
+    <div class="question-sec">
+        <div class="main-class-note">
+            <b>Note:</b> Please Select at least one question to submit quiz.
+        </div>
         <div class="main-class" *ngFor = "let index = index;let question of jumbledQuestions">
                 <mat-card class = "question-class">
                     <mat-card-header class = "header-class">
@@ -13,6 +17,7 @@
                     </mat-card-actions>
                 </mat-card>
         </div>
-        <div>
-                <input type = "button" class = "submit-button" value = "Submit Quiz" (click)="submitQuiz()">
+    </div>
+        <div class="text-center">
+                <button mat-raised-button type = "button" class = "submit-button" [disabled]="selected.length==0"  (click)="submitQuiz()">Submit Quiz</button>
         </div>
