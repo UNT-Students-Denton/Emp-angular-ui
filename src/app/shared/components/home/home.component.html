@@ -1,15 +1,14 @@
 <div class="container">
-    <div class = "row-1">
-      <h2 class="heading">Welcome to Orientation Course</h2>
-    </div>
- <div class = "row-2">
-  <div class="course-flex">
-      <div  *ngFor="let card of dept">
+  <div class="row-1">
+    <h2 class="heading">Welcome to Orientation Course</h2>
+  </div>
+  <div class="row-2">
+    <div class="course-flex">
+      <div *ngFor="let card of dept">
         <span *ngIf="card.dept_name?.length>0">
           <app-course-card [card]="card"></app-course-card>
         </span>
-        </div>
+      </div>
+    </div>
   </div>
-    </div> 
 </div>
-  

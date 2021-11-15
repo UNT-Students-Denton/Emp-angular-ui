@@ -9,95 +9,99 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class SideNavComponent implements OnInit {
   // Declare height and width variables
-  scrHeight:any;
-  scrWidth:any;
-  sideMenus:any[]=[
-  {
-    iconName:"fa fa-home",
-    name:"Home",
-    isAdmin:false,
-    url:'/home',
-    isActive:false,
-  },
-  {
-    iconName:"fa fa-file",
-    name:"Take Quiz",
-    isAdmin:false,
-    url:'/start-quiz',
-    isActive:false,
-  },
-  {
-    iconName:"fa fa-user-circle",
-    name:"Employees",
-    isAdmin:true,
-    isActive:false
-  }
-]
-  @HostListener('window:resize', ['$event'])
-    getScreenSize(event?:Event) {
-          this.scrHeight =window.innerHeight
-          ;
-          console.log(window)
-          this.scrWidth = window.innerWidth;
-          this.onResize();
+  scrHeight: any;
+  scrWidth: any;
+  sideMenus: any[] = [
+    {
+      iconName: "fa fa-home",
+      name: "Home",
+      isAdmin: false,
+      url: '/home',
+      isActive: false,
+    },
+    {
+      iconName: "fa fa-file",
+      name: "Take Quiz",
+      isAdmin: false,
+      url: '/start-quiz',
+      isActive: false,
+    },
+    {
+      iconName: "fa fa-user-circle",
+      name: "Employees",
+      isAdmin: true,
+      isActive: false
     }
-  @Input() isMenuToggle:any;
-  userInfo:any={};
-  constructor( private authService:ApiService,
-    private router:Router) { 
+  ]
+  //fetch current screen size to set side nav
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?: Event) {
+    this.scrHeight = window.innerHeight
+      ;
+    console.log(window)
+    this.scrWidth = window.innerWidth;
+    this.onResize();
+  }
+  @Input() isMenuToggle: any;
+  userInfo: any = {};
+  constructor(private authService: ApiService,
+    private router: Router) {
     // this.authService.get('/emp',{}).subscribe(res=>{
     //   console.log(res);
     // })
     this.getScreenSize();
   }
-ngOnChanges(changes:any){
-if(changes["isMenuToggle"]){
-}
-}
-  ngOnInit(): void {
-     this.userInfo=localStorage.getItem("userInfo");
-     this.userInfo=JSON.parse(this.userInfo);
-     this.sideMenus=this.sideMenus.filter(res=>res.isAdmin==this.userInfo.is_Admin);
-     this.setUrl();
-  }
-  ngAfterViewInit(){
-  this.onResize();
-  }
-  onResize(){
-    let sideNavConcent=document.getElementById("side-nav-content");
-    if(sideNavConcent){
-      sideNavConcent.style.height=this.scrHeight-50+'px'
+  ngOnChanges(changes: any) {
+    if (changes["isMenuToggle"]) {
     }
   }
-  loadScreen(item:any){
+  ngOnInit(): void {
+    this.userInfo = localStorage.getItem("userInfo");
+    this.userInfo = JSON.parse(this.userInfo);
+    this.sideMenus = this.sideMenus.filter(res => res.isAdmin == this.userInfo.is_Admin);
+    this.setUrl();
+  }
+  ngAfterViewInit() {
+    this.onResize();
+  }
+  //resize functinality for side nav
+  onResize() {
+    let sideNavConcent = document.getElementById("side-nav-content");
+    if (sideNavConcent) {
+      sideNavConcent.style.height = this.scrHeight - 50 + 'px'
+    }
+  }
+  //load defaulty screen when login the application
+  loadScreen(item: any) {
     this.router.navigateByUrl(`app${item.url}`);
-    this.sideMenus=this.sideMenus.map(res=>{
-      if(res.name==item.name){
-        res.isActive=true;
+    this.sideMenus = this.sideMenus.map(res => {
+      if (res.name == item.name) {
+        res.isActive = true;
       }
-      if(res.name!==item.name){
-        res.isActive=false;
+      if (res.name !== item.name) {
+        res.isActive = false;
       }
       return res;
     });
   }
-  setUrl(){
-    if(this.userInfo.is_Admin){
+  //set particular screen when we click the side nav
+  setUrl() {
+    if (this.userInfo.is_Admin) {
       this.router.navigateByUrl("app/admin");
-      this.sideMenus=this.sideMenus.map(res=>{
-        if(res.name=="Employees"){
-          res.isActive=true;
+      this.sideMenus = this.sideMenus.map(res => {
+        if (res.name == "Employees") {
+          res.isActive = true;
         }
         return res;
       })
-    }else{
-     this.sideMenus=this.sideMenus.map(res=>{
-       if(res.name=="Home"){
-         res.isActive=true;
-       }
-       return res;
-     });
-     this.router.navigateByUrl("app/home");
+    } else {
+      this.sideMenus = this.sideMenus.map(res => {
+        if (res.name == "Home") {
+          res.isActive = true;
+        }
+        return res;
+      });
+      this.router.navigateByUrl("app/home");
     }
   }
 }

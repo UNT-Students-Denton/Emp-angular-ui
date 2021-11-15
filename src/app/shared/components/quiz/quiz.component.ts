@@ -36,9 +36,11 @@ export class QuizComponent implements OnInit {
     let id = this.userInfo.User_Id;
     this.getQuestions();
   }
+  //message event to child component
   sendMessage() {
     this.messageEvent.emit(''+this.score);
   }
+  //question answers setting function
   radioChange(event: MatRadioChange, data: { id: any; }) {
     console.log(data);
     //this.selected = event.value;
@@ -48,6 +50,7 @@ export class QuizComponent implements OnInit {
     this.index = index;
     this.selected[this.index] = event.value.slice(0,-1);
   }
+  //run when we click submit button
   submitQuiz(){
     localStorage.removeItem("Score");
     for(var i=0;i<10; i++){
@@ -58,6 +61,7 @@ export class QuizComponent implements OnInit {
     console.log(this.score);
     this.getEmployee();
   }
+  //update score when click submit button
   updateScore(){
     let args:any={};
     args['Quiz_score']=this.score*10;
@@ -73,6 +77,7 @@ export class QuizComponent implements OnInit {
       }
     }));
   }
+  //fetch question and answer using deparment Id
   getQuestions(){
     let args:any={};
     args["Dept_Id"]=this.userInfo.Dept_Id;

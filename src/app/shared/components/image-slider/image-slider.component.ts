@@ -16,13 +16,13 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./image-slider.component.scss']
 })
 export class ImageSliderComponent implements OnInit {
-  @Input() department_name:string;
-  @Input() data:any[];
-  @ViewChild('usefulSwiper', {static: false}) usefulSwiper: SwiperComponent;
-  config: SwiperOptions={
-    pagination: { 
-      el: '.swiper-pagination', 
-      clickable: true 
+  @Input() department_name: string;
+  @Input() data: any[];
+  @ViewChild('usefulSwiper', { static: false }) usefulSwiper: SwiperComponent;
+  config: SwiperOptions = {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
     },
     navigation: {
       nextEl: '.swiper-button-next',
@@ -30,22 +30,22 @@ export class ImageSliderComponent implements OnInit {
     },
     spaceBetween: 40,
   };
-  isEnd : Boolean = false;
-  activeIndex:any;
+  isEnd: Boolean = false;
+  activeIndex: any;
   private visible = false;
-  constructor(private router:Router,
-    private authService:AuthService,
+  constructor(private router: Router,
+    private authService: AuthService,
     private len: ViewCourseComponent) { }
 
   ngOnInit(): void {
-    }
-    ngAfterViewInit(): void {
-        this.usefulSwiper.swiper.on('reachEnd', () =>{
-          this.isEnd = true;
-        });
-    }
-    
-  goToQuiz(){
+  }
+  ngAfterViewInit(): void {
+    this.usefulSwiper.swiper.on('reachEnd', () => {
+      this.isEnd = true;
+    });
+  }
+//navigate to quiz page
+  goToQuiz() {
     this.router.navigateByUrl("app/start-quiz");
   }
 }

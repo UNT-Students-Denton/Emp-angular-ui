@@ -1,40 +1,35 @@
 <div class="top-nav">
-    <mat-toolbar class="top-tool-style">
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-          <mat-icon (click)="toggle()">menu</mat-icon>
-        </button>
-        <span>Employee Orientation Portal <i class="fa fa-info-cirle"></i></span>
-        <span class="top-nav-spacer"></span>
-        <button mat-icon-button class="user-button" aria-label="Example icon-button with share icon"
-        (click)="closeOverlay()" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
-          <mat-icon class="user-icon">account_circle</mat-icon>
-        </button>
-      </mat-toolbar>
+  <mat-toolbar class="top-tool-style">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon (click)="toggle()">menu</mat-icon>
+    </button>
+    <span>Employee Orientation Portal <i class="fa fa-info-cirle"></i></span>
+    <span class="top-nav-spacer"></span>
+    <button mat-icon-button class="user-button" aria-label="Example icon-button with share icon"
+      (click)="closeOverlay()" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+      <mat-icon class="user-icon">account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
 </div>
 
-<ng-template
-  cdkConnectedOverlay
-  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
-  [cdkConnectedOverlayHasBackdrop]="true"
-  [cdkConnectedOverlayOrigin]="trigger"
-  [cdkConnectedOverlayOpen]="isOpen"
-  (backdropClick)="closeOverlay()"
->
-<div class="card wid-180">
-  <ul class="list-style-none pad-0 overlay-margin user-overlay m-0">
-    <li class="li-item-style" (click)="showProfile()">
-      <div class="dis-inline-block overlay-style ml-8">
-       <i class="fa fa-user f-25"></i>
-      </div>
-      <div class="dis-inline-block ml-8 emp-name" >{{employee.Emp_First_Name}},{{employee.Emp_Last_Name}}</div>
-    </li>
-    <li class="li-item-style" (click)="logout()">
-      <div class="dis-inline-block overlay-style ml-8">
-        <mat-icon>logout</mat-icon>
-      </div>
-      <div class="dis-inline-block ml-8" >Logout</div>
-    </li>
-    
-  </ul>
-</div>
+<ng-template cdkConnectedOverlay cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayHasBackdrop]="true" [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen"
+  (backdropClick)="closeOverlay()">
+  <div class="card wid-180">
+    <ul class="list-style-none pad-0 overlay-margin user-overlay m-0">
+      <li class="li-item-style" (click)="showProfile()">
+        <div class="dis-inline-block overlay-style ml-8">
+          <i class="fa fa-user f-25"></i>
+        </div>
+        <div class="dis-inline-block ml-8 emp-name">{{employee.Emp_First_Name}},{{employee.Emp_Last_Name}}</div>
+      </li>
+      <li class="li-item-style" (click)="logout()">
+        <div class="dis-inline-block overlay-style ml-8">
+          <mat-icon>logout</mat-icon>
+        </div>
+        <div class="dis-inline-block ml-8">Logout</div>
+      </li>
+
+    </ul>
+  </div>
 </ng-template>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { RetakeDialog } from './retake-dialog/retake-dialog.component';
@@ -13,53 +13,55 @@ import { SharedService } from '../../services/shared.service';
 
 export class ViewScoreComponent implements OnInit {
   disabled: Boolean;
-  score : number = 80;
+  score: number = 80;
   text1 = "Congratulations! you have passed the quiz";
   text2 = " You have failed the quiz. Please retake the quiz.";
   text3 = "";
-  Employee:any={};
+  Employee: any = {};
   constructor(public dialog: MatDialog,
     private router: Router,
     private authService: AuthService,
-    private sharedService:SharedService) { }
+    private sharedService: SharedService) { }
   ngOnInit(): void {
-    let score=localStorage.getItem("Score");
-    if(!score){
-    this.getEmployees();
-    }else{
-      this.Employee.Quiz_score=parseInt(score);
+    let score = localStorage.getItem("Score");
+    if (!score) {
+      this.getEmployees();
+    } else {
+      this.Employee.Quiz_score = parseInt(score);
     }
   }
+  //retake quize confirmation dialog
   openRetakeDialog() {
-    if(this.score < 80){
+    if (this.score < 80) {
       this.router.navigateByUrl('app/quiz');
     }
-    else{
-    this.dialog.open(RetakeDialog);
+    else {
+      this.dialog.open(RetakeDialog);
     }
   }
+  //certificate confirmation dialog
   openCertificateDialog() {
     this.dialog.open(ViewCertificateDialog);
   }
   // for getting employees
-  getEmployees(){
-    let args:any={};
-    let userInfo:any=this.authService.getUserInfo();
-    args["Emp_Id"]=userInfo.User_Id;
-    this.sharedService.getEmployeeDetails(args).subscribe(res=>{
-      if(res.status=="Success"){
-       this.Employee=res.data[0];
-       if(this.Employee.Quiz_score > 80){
-        this.text3 = this.text1;
+  getEmployees() {
+    let args: any = {};
+    let userInfo: any = this.authService.getUserInfo();
+    args["Emp_Id"] = userInfo.User_Id;
+    this.sharedService.getEmployeeDetails(args).subscribe(res => {
+      if (res.status == "Success") {
+        this.Employee = res.data[0];
+        if (this.Employee.Quiz_score > 80) {
+          this.text3 = this.text1;
+        }
+        else {
+          this.disabled = true;
+          this.text3 = this.text2;
+        }
       }
-      else{
-        this.disabled=true;
-        this.text3=this.text2;
-      }
-      }
-    
+
     })
-      }
+  }
 
 }
 

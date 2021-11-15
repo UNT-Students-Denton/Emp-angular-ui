@@ -1,19 +1,16 @@
 <div class='view-course-screen'>
-<div class="start-quiz-button"><button mat-raised-button id = "button" [class.primary-bg]="isEnd" [disabled]="!isEnd"  (click) = "goToQuiz()">Start Quiz</button>
-</div>
-  <div class = "title-image">
-  <!-- <img src = "/assets/training_images/Chickfila/chickfila-header.jpg" alt="Couldn't load header image" style = "height:80%;"> -->
-</div>
-<swiper [config]="config" #usefulSwiper>
+  <div class="start-quiz-button"><button mat-raised-button id="button" [class.primary-bg]="isEnd" [disabled]="!isEnd"
+      (click)="goToQuiz()">Start Quiz</button>
+  </div>
+  <div class="title-image">
+    <!-- <img src = "/assets/training_images/Chickfila/chickfila-header.jpg" alt="Couldn't load header image" style = "height:80%;"> -->
+  </div>
+  <swiper [config]="config" #usefulSwiper>
     <div class="swiper-wrapper">
-        <img class="swiper-slide" *ngFor="let img of data" [src]="img.src" [alt]="img.alt"/>
-      </div>
+      <img class="swiper-slide" *ngFor="let img of data" [src]="img.src" [alt]="img.alt" />
+    </div>
   </swiper>
   <div class="swiper-button-prev"></div>
   <div class="swiper-pagination"></div>
   <div class="swiper-button-next"></div>
 </div>
-
-
-
- 
