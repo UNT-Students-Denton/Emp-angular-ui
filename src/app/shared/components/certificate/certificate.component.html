@@ -11,7 +11,7 @@
            <span style="font-size:30px">{{data?.Dept_Name}}</span> <br/><br/>
            <span style="font-size:20px">with score of <b>{{actualScore}}</b></span> <br/><br/>
            <span style="font-size:25px"><i>dated</i></span><br>
-          <span style="font-size:30px">26 th jan 2021</span>
+          <span style="font-size:30px">{{data?.Start_Date?(data.Start_Date| date: 'MM/dd/yyyy'):'N.A'}}</span>
        
 
     </div>

@@ -22,7 +22,8 @@ isCertificate:boolean=false;
    ngOnChanges(changes:SimpleChange){
      if(this.data){
       this.isCertificate=true;
-      this.actualScore=(Math.round(this.data.Quiz_score/this.totalScore)*100).toString() + "%";
+      this.actualScore=(this.data.Quiz_score).toString() + "%";
+      //(Math.round(this.data.Quiz_score/this.totalScore)*100).toString() + "%";
 
      }
    }
@@ -37,8 +38,9 @@ isCertificate:boolean=false;
     this.subscription.push(this.sharedService.getEmployeeDetails(args).subscribe(res=>{
       if(res.status=='Success'){
         this.isCertificate=true;
-        this.data=res.data;
-        this.actualScore=(Math.round(this.data.Quiz_score/this.totalScore)*100).toString() + "%";
+        this.data=res.data[0];
+        this.actualScore=(this.data.Quiz_score).toString() + "%";
+        // this.actualScore=(Math.round(this.data.Quiz_score/this.totalScore)*100).toString() + "%";
 
       }
     }))

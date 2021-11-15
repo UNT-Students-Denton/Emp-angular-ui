@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { RetakeDialog } from './retake-dialog/retake-dialog.component';
 import { ViewCertificateDialog } from './view-certificate-dialog/view-certificate-dialog';
-import { QuizComponent } from '../quiz/quiz.component';
 import { SharedService } from '../../services/shared.service';
 @Component({
   selector: 'app-view-score',
@@ -24,7 +23,12 @@ export class ViewScoreComponent implements OnInit {
     private authService: AuthService,
     private sharedService:SharedService) { }
   ngOnInit(): void {
+    let score=localStorage.getItem("Score");
+    if(!score){
     this.getEmployees();
+    }else{
+      this.Employee.Quiz_score=parseInt(score);
+    }
   }
   openRetakeDialog() {
     if(this.score < 80){
@@ -37,13 +41,14 @@ export class ViewScoreComponent implements OnInit {
   openCertificateDialog() {
     this.dialog.open(ViewCertificateDialog);
   }
+  // for getting employees
   getEmployees(){
     let args:any={};
     let userInfo:any=this.authService.getUserInfo();
     args["Emp_Id"]=userInfo.User_Id;
     this.sharedService.getEmployeeDetails(args).subscribe(res=>{
       if(res.status=="Success"){
-       this.Employee=res.data;
+       this.Employee=res.data[0];
        if(this.Employee.Quiz_score > 80){
         this.text3 = this.text1;
       }

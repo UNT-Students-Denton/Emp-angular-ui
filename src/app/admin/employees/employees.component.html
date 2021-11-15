@@ -17,7 +17,7 @@
               
                 <!-- Position Column -->
                 <ng-container matColumnDef="ID">
-                  <th  class="must-80" mat-header-cell mat-sort-header="Emp_Id" *matHeaderCellDef> ID </th>
+                  <th  class="must-150" mat-header-cell mat-sort-header="Emp_Id" *matHeaderCellDef> ID </th>
                   <td mat-cell class="must-80" *matCellDef="let element"> {{element.Emp_Id}} </td>
                 </ng-container>
                
@@ -34,14 +34,14 @@
 
                 <!-- Department Column -->
                 <ng-container matColumnDef="Department">
-                  <th class="must-200" mat-header-cell mat-sort-header="Dept_Name" *matHeaderCellDef> Department </th>
-                  <td class="must-200" mat-cell *matCellDef="let element">{{element.Dept_Name}} </td>
+                  <th class="must-200" mat-header-cell mat-sort-header="Dept_Id" *matHeaderCellDef> Department </th>
+                  <td class="must-200" mat-cell *matCellDef="let element">{{departMentConstants[element.Dept_Id]}} </td>
                 </ng-container>
               
                 <!-- Score Column -->
                 <ng-container matColumnDef="Score">
-                  <th class="must-80" mat-header-cell mat-sort-header="Quiz_score" *matHeaderCellDef>Quiz Score </th>
-                  <td class="must-80" mat-cell *matCellDef="let element"> {{element.Quiz_score}} </td>
+                  <th class="must-150" mat-header-cell mat-sort-header="Quiz_score" *matHeaderCellDef>Quiz Score </th>
+                  <td class="must-150" mat-cell *matCellDef="let element"> {{element.Quiz_score}} </td>
                 </ng-container>
 
                      <!-- Status Column -->

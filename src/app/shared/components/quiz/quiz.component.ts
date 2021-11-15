@@ -49,13 +49,14 @@ export class QuizComponent implements OnInit {
     this.selected[this.index] = event.value.slice(0,-1);
   }
   submitQuiz(){
+    localStorage.removeItem("Score");
     for(var i=0;i<10; i++){
       if(this.selected[i]==this.correctOption[i]){
         this.score += 1;
       }
     }
     console.log(this.score);
-    this.updateScore();
+    this.getEmployee();
   }
   updateScore(){
     let args:any={};
@@ -119,6 +120,24 @@ export class QuizComponent implements OnInit {
   }
 }));
 }
+getEmployee(){
+  let args:any={};
+  let userInfo:any=this.authService.getUserInfo();
+  args["Emp_Id"]=userInfo.User_Id;
+  this.sharedService.getEmployeeDetails(args).subscribe(res=>{
+    if(res.status=="Success"){
+     if(res.data[0].Quiz_score < this.score){
+       this.updateScore();
+    }else{
+      localStorage.setItem("Score",this.score.toString());
+      this.router.navigateByUrl("app/view-score");
+
+    }
+    
+    }
+  
+  })
+    }
   ngOnDestroy(){
     this.subscriptions.forEach(res=>{
       if(res){

@@ -14,17 +14,17 @@ export class EmployeeTransferComponent implements OnInit {
   subscriptions:Subscription[]=[];
   dropDownItems: any[] = [
     { value: '', viewValue: 'Select' },
-    { value: 'Fuzzys Taco Shop', viewValue: 'Fuzzys Taco Shop' },
-    { value: 'Chick-fil-a', viewValue: 'Chick-fil-a' },
-    { value: 'Burger-King', viewValue: 'Burger-King' },
-    { value: 'Cafeteria', viewValue: 'Cafeteria' },
-    { value: 'Assistantship', viewValue: 'Assistantship' },
-    { value: 'Tech Assistants', viewValue: 'Tech Assistants' },
+    { value: 1, viewValue: 'Fuzzys Taco Shop' },
+    { value: 2, viewValue: 'Chick-fil-a' },
+    { value: 3, viewValue: 'Burger-King' },
+    { value: 4, viewValue: 'Cafeteria' },
+    { value: 6, viewValue: 'Assistantship' },
+    { value: 5, viewValue: 'Tech Assistants' },
   ];
   statusOptions: any[] = [
     { value: '', viewValue: 'Select' },
-    { value: 'In-Complete', viewValue: 'In-Complete' },
-    { value: 'Complete', viewValue: 'Complete' }
+    { value: 'Not Completed', viewValue: 'Not Completed' },
+    { value: 'Completed', viewValue: 'Completed' }
   ];
   transferDept:any="Select";
   errorMsg:any="";
@@ -36,7 +36,7 @@ export class EmployeeTransferComponent implements OnInit {
       this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Training_Status)
 
     }else{
-      this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Dept_Name)
+      this.dropDownItems=this.dropDownItems.filter(s=>s.value!==data.Dept_Id)
 
     }
   }
@@ -45,8 +45,8 @@ export class EmployeeTransferComponent implements OnInit {
   }
   transferRequest(){
     let args:any={};
-    args["Emp_Id"]=this.data.Dept_Id;
-    args["transfer_department"]=this.transferDept;
+    args["Emp_Id"]=this.data.Emp_Id;
+    args["transfer_department"]=(this.dropDownItems.filter(x=>x.viewValue==this.transferDept)[0]["value"]).toString();;
     args["is_transfer_request"]=true;
     this.subscriptions.push(this.sharedService.requestTransfer(args).subscribe(res=>{
       if(res.status=='Success'){
@@ -63,12 +63,13 @@ export class EmployeeTransferComponent implements OnInit {
   transfer(isTransfer:boolean){
     let args:any={};
     args["Dept_Id"]=this.data.Dept_Id;
+    args["User_Id"]=this.data.User_Id;
     if(isTransfer){
-      args["Dept_Name"]=this.data.transfer_department;
+      args["Dept_Id"]=parseInt(this.data.transfer_department);
       args["transfer_department"]=null;
       args["is_transfer_request"]=0;
     }else{
-      args["Dept_Name"]=this.transferDept;
+      args["Dept_Id"]=this.dropDownItems.filter(x=>x.viewValue==this.transferDept)[0]["value"];
 
     }
     args["isTransfer"]=true;
@@ -85,7 +86,7 @@ export class EmployeeTransferComponent implements OnInit {
   }
   statusChange(){
     let args:any={};
-    args["Emp_Id"]=this.data.Dept_Id;
+    args["Emp_Id"]=this.data.Emp_Id;
     args["Training_Status"]=this.transferDept;
     this.subscriptions.push(this.sharedService.updateEmployee(args).subscribe(res=>{
       if(res.status=='Success'){

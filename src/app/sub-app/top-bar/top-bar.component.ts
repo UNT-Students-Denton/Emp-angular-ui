@@ -60,7 +60,7 @@ getEmployeeDetails(id:any){
   let args={Emp_Id:id};
   this.sharedService.getEmployeeDetails(args).subscribe(res=>{
     if(res.status=='Success'){
-      this.employee=res.data;
+      this.employee=res.data[0];
     }
   })
   

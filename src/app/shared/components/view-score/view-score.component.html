@@ -8,6 +8,6 @@
            <p class="score1"><b>{{Employee.Quiz_score}}%</b></p>
            <p class="text">in this quiz</p>
     </div>
-    <input type = "button" class = "Quiz-button" value ="Retake Quiz" (click) = "openRetakeDialog()">
-    <input type = "button" class = "certificate-button" [class.disabled]="disabled" [disabled] = "disabled" value ="View Certificate" (click) = "openCertificateDialog()">
+    <input type = "button" class = "Quiz-button" value ="Retake Quiz" [class.disabled]="Employee.Quiz_score>=80" [disabled]="Employee.Quiz_score>=80" (click) = "openRetakeDialog()">
+    <input type = "button" class = "certificate-button" [class.disabled]="disabled || Employee.Quiz_score<80" [disabled] = "disabled || Employee.Quiz_score<80" value ="View Certificate" (click) = "openCertificateDialog()">
 </div>

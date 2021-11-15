@@ -4,8 +4,12 @@ import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+
+
 import { EmployeeTransferComponent } from 'src/app/shared/components/employee-transfer/employee-transfer.component';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { constants } from 'src/app/shared/constants/constant';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 
 @Component({
@@ -26,29 +30,35 @@ export class EmployeesComponent implements OnInit {
   isPrint:boolean=false;
   certificateData:any={};
   certificate:boolean=false;
+  departMentConstants:any=constants.departments;
+  userInfo:any;
+
   constructor(private sharedService:SharedService,
     private router:Router,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private authService:AuthService) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.Employees);
+    this.userInfo=this.authService.getUserInfo();
     this.getEmployees();
   
   }
   getEmployees(){
-    
+    let args:any={};
 this.sharedService.getEmployes().subscribe(res=>{
   if(res.status=="Success"){
     console.log(res)
-   this.Employees=res.data;
+   this.Employees=res.data.filter((x:any)=>x.Dept_Id==this.userInfo.Dept_Id);
    this.dataSource = new MatTableDataSource(this.Employees);
    this.setPageSizeOptions();
+   this.dataSource.paginator = this.paginator;
+
   }
 
 })
   }
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
 }
 onPage(event:any){
   console.log("pageevent"+event)
