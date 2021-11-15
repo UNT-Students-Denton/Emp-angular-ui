@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
     args['password'] = this.loginForm.value.password;
     this.errorMsg = "";
     this.authService.login(args).subscribe(res => {
-      if (res.status == "Success") {
+      if (res.status == "Success" &&
+       Object.keys(res.data).length>0 ) {
         let userInfo = res.data;
         userInfo.Token = res.access_token;
         if (userInfo.is_Admin == 1) {
@@ -61,6 +62,8 @@ export class LoginComponent implements OnInit {
         } else {
           this.errorMsg = `Please enter valid ${this.isAdmin ? 'Admin' : 'Employee'} Credentials.`
         }
+      }else{
+        this.errorMsg = `Please enter valid ${this.isAdmin ? 'Admin' : 'Employee'} Credentials.`
       }
     })
   }
