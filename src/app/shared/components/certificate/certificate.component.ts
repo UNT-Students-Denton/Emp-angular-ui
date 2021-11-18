@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { constants } from '../../constants/constant';
 import { AuthService } from '../../services/auth.service';
 import { SharedService } from '../../services/shared.service';
 
@@ -15,6 +16,7 @@ export class CertificateComponent implements OnInit {
   actualScore: any = 0;
   subscription: Subscription[] = []
   isCertificate: boolean = false;
+  deptConstants:any=constants.departments;
   constructor(private authService: AuthService,
     private sharedService: SharedService) {
     this.userInfo = this.authService.getUserInfo;

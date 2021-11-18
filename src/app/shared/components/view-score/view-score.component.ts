@@ -27,7 +27,10 @@ export class ViewScoreComponent implements OnInit {
     if (!score) {
       this.getEmployees();
     } else {
-      this.Employee.Quiz_score = parseInt(score);
+      this.Employee.Quiz_score = parseInt(score)*10;
+      if (this.Employee.Quiz_score >=80) {
+        this.sharedService.isAllowQuizBack=false;
+        }
     }
   }
   //retake quize confirmation dialog
@@ -53,6 +56,9 @@ export class ViewScoreComponent implements OnInit {
         this.Employee = res.data[0];
         if (this.Employee.Quiz_score > 80) {
           this.text3 = this.text1;
+        }
+        if (this.Employee.Quiz_score >=80) {
+        this.sharedService.isAllowQuizBack=false;
         }
         else {
           this.disabled = true;

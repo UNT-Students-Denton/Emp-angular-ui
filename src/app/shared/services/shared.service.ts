@@ -5,6 +5,7 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class SharedService {
+  isAllowQuizBack:boolean=true;
   constructor(private apiService: ApiService) { }
 
   getEmployes() {

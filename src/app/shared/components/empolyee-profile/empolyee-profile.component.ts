@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { constants } from '../../constants/constant';
 import { AuthService } from '../../services/auth.service';
 import { SharedService } from '../../services/shared.service';
 import { EmployeeTransferComponent } from '../employee-transfer/employee-transfer.component';
@@ -25,6 +26,7 @@ export class EmpolyeeProfileComponent implements OnInit {
   userInfo: any = {};
   subscription: Subscription[] = [];
   isCertificate: boolean = false;
+  depConstants:any=constants.departments;
   constructor(private sharedService: SharedService,
     private route: ActivatedRoute, private authService: AuthService,
     public dialog: MatDialog) {

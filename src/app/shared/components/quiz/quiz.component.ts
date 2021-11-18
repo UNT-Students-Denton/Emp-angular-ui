@@ -32,6 +32,9 @@ export class QuizComponent implements OnInit {
     private authService:AuthService,
     private sharedService:SharedService) { }
   ngOnInit(): void {
+    if(!this.sharedService.isAllowQuizBack){
+      this.router.navigateByUrl("app/home");
+    }
     this.userInfo=this.authService.getUserInfo();
     let id = this.userInfo.User_Id;
     this.getQuestions();
@@ -144,6 +147,7 @@ getEmployee(){
   })
     }
   ngOnDestroy(){
+    this.sharedService.isAllowQuizBack=true;
     this.subscriptions.forEach(res=>{
       if(res){
         res.unsubscribe();
