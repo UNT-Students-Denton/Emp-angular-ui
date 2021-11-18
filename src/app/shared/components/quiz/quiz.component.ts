@@ -71,6 +71,7 @@ export class QuizComponent implements OnInit {
     args['Emp_Id']= this.userInfo.User_Id;
     if(this.score>=8){
     args['Start_Date']=this.sharedService.addNumberOfDaysToCurrentDate(3);
+    args['Training_Status']="Completed";
     }
     this.subscriptions.push(this.sharedService.updateEmployee(args).subscribe(res=>{
       if(res.status=='Success'){
@@ -134,7 +135,7 @@ getEmployee(){
   args["Emp_Id"]=userInfo.User_Id;
   this.sharedService.getEmployeeDetails(args).subscribe(res=>{
     if(res.status=="Success"){
-     if(res.data[0].Quiz_score < this.score){
+     if(res.data[0].Quiz_score < this.score*10){
        this.updateScore();
     }else{
       localStorage.setItem("Score",this.score.toString());
