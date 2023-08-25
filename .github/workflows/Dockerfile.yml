@@ -5,7 +5,7 @@ on:
     branches:
       - master
     tags:
-      - "v*-hello-world"
+      - "hello-world"
   pull_request:
     branches:
       - 'master'
