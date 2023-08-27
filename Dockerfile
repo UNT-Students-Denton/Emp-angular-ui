@@ -2,7 +2,7 @@ FROM node:19-alpine AS build
 WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
-COPY /usr/src/app /usr/share/nginx/html
+COPY Emp-angular-ui /usr/src/app
 RUN npm run build 
 
 FROM nginx:1.23.2-alpine
