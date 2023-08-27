@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-  configUrls: any = environment.config;
+  configUrls: any = environment?.config;
   constructor(private http: HttpClient) {
   }
   //http get method
